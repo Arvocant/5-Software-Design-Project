@@ -1,16 +1,17 @@
 package Factory;
 
 import Expense.*;
+import Person.Person;
 
 /*
  * is the equivalent of the ExpenseService from our example
  */
 
 public class FactoryExpense {
-    public static <Person> Expense createExpense(Type expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
+    public static Expense createExpense(Type expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
         switch (expenseType) {
             case EXACT -> {
-                return new PersonalPayment(, amount, paidBy, expenseDescription);
+                return new PersonalPayment("ID", amount, paidBy, expenseDescription);
             } case EQUAL -> {
                 // code to split the sum equally
                 /*
@@ -23,7 +24,7 @@ public class FactoryExpense {
                  */
                 double amountOfPeople = 1;
                 double splitAmount = amount / amountOfPeople;
-                return new UnifiedPayment(, splitAmount, paidBy, expenseDescription);
+                return new UnifiedPayment("ID", splitAmount, paidBy, expenseDescription);
             } default -> {
                 return null;
             }
