@@ -2,6 +2,7 @@ package database;
 
 import Person.Person;
 
+import java.beans.PropertyChangeEvent;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,8 +23,10 @@ public class PersonDatabase extends database<Person>{
     @Override
     public void addEntry(Person person) {
         if (person != null && !db.containsKey(person.getId())) {
-            db.put(person.getId(), person);
-            property.firePropertyChange("addPerson", null, person);
+            this.db.put(person.getId(), person);
+            PropertyChangeEvent event = new PropertyChangeEvent(this, "addPerson", this.db, person);
+
+            this.property.firePropertyChange(event);
         }
     }
 

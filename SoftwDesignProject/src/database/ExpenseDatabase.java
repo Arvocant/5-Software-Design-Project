@@ -2,6 +2,8 @@ package database;
 
 import Expense.Expense;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +24,9 @@ public class ExpenseDatabase extends database<Expense>{
     public void addEntry(Expense expense) {
         if (expense != null && !db.containsKey(expense.getId())) { //Check if there is an expense and if an ID was given
             this.db.put(expense.getId(), expense); //Put's the new expense with the given ID in the Hashmap
-            this.property.firePropertyChange("addExpense", null, expense); //fires the propertyChangeListener
+            PropertyChangeEvent event = new PropertyChangeEvent(this, "addExpense", null, expense);
+
+            this.property.firePropertyChange(event); //fires the propertyChangeListener
         }
     }
 
@@ -31,4 +35,13 @@ public class ExpenseDatabase extends database<Expense>{
         return db.get(id);
     }
 
+    @Override
+    public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+        super.addPropertyChangeListener(propertyName, listener);
+    }
+
+    @Override
+    public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
+        super.removePropertyChangeListener(propertyName, listener);
+    }
 }
