@@ -1,11 +1,9 @@
 package database;
 
-import Person.Person;
-
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 
-public abstract class database {
+public abstract class database<T> {
     protected final PropertyChangeSupport property;
 
     public database()
@@ -13,8 +11,8 @@ public abstract class database {
         property = new PropertyChangeSupport(this);
     }
 
-//    public abstract void addEntry(Person p, RegisterEntry re);
-//    public abstract RegisterEntry getEntry(Employee e);
+    public abstract void addEntry(T entry);
+    public abstract T getEntry(String id);
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 
