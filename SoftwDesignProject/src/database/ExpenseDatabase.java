@@ -14,7 +14,7 @@ public class ExpenseDatabase extends database<Expense>{
     private Map<Integer, Expense> db;
     private static ExpenseDatabase instance; //Singleton --> 1 instance
 
-    List<Person> personList;
+
 
     private ExpenseDatabase() { this.db = new HashMap<>(); } //Constructor --> make new database (which is a HashMap)
 
@@ -35,7 +35,7 @@ public class ExpenseDatabase extends database<Expense>{
     }
 
     @Override
-    public Expense getEntry(String id) {
+    public Expense getEntry(int id) {
         return db.get(id);
     }
 
@@ -47,17 +47,5 @@ public class ExpenseDatabase extends database<Expense>{
     @Override
     public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
         super.removePropertyChangeListener(propertyName, listener);
-    }
-
-    public List<Person> getPersonList() {
-        return personList;
-    }
-
-    public void setPersonList(List<Person> personList) {
-        this.personList = personList;
-    }
-
-    public Person getById(int id){
-        return personList.get(id);
     }
 }

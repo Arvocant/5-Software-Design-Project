@@ -12,7 +12,7 @@ public abstract class database<T> {
     }
 
     public abstract void addEntry(T entry);
-    public abstract T getEntry(String id);
+    public abstract T getEntry(int id);
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 
