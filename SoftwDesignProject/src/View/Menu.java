@@ -1,3 +1,4 @@
+
 package View;
 
 import javax.swing.*;
@@ -17,7 +18,12 @@ public class Menu extends JFrame {
         setTitle("Expense Form");
         setSize(450, 300);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new FlowLayout());
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.weightx = 2.0;
+        c.weighty = 2.0;
 
         // Components
         JLabel titleLabel = new JLabel("Title:");
@@ -72,25 +78,60 @@ public class Menu extends JFrame {
         });
 
         // Add components to the frame
-        add(titleLabel);
-        add(titleField);
-        add(nameLabel);
-        add(nameField);
-        add(ticketTypeLabel);
-        add(ticketTypeComboBox);
-        add(radioButtonLabel);
-        add(equalRadioButton);
-        add(exactRadioButton);
-        add(amountLabel);
-        add(amountField);
-        add(paidByLabel);
-        add(paidByField);
-        add(descriptionLabel);
-        add(descriptionTextArea);
-        add(addButton);
+        c.gridx = 0; c.gridy = 0;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(titleLabel,c);
+        c.gridx = 1; c.gridy = 0;
+        c.gridwidth = 2; c.gridheight = 1;
+        add(titleField,c);
+        c.gridx = 0; c.gridy = 1;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(nameLabel,c);
+        c.gridx = 1; c.gridy = 1;
+        c.gridwidth = 2; c.gridheight = 1;
+        add(nameField,c);
+        c.gridx = 0; c.gridy = 2;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(ticketTypeLabel,c);
+        c.gridx = 1; c.gridy = 2;
+        c.gridwidth = 2; c.gridheight = 1;
+        add(ticketTypeComboBox,c);
+
+        c.gridx = 0; c.gridy = 3;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(radioButtonLabel,c);
+        c.gridx = 1; c.gridy = 3;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(equalRadioButton,c);
+        c.gridx = 2; c.gridy = 3;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(exactRadioButton,c);
+
+        c.gridx = 0; c.gridy = 4;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(amountLabel,c);
+        c.gridx = 1; c.gridy = 4;
+        c.gridwidth = 2; c.gridheight = 1;
+        add(amountField,c);
+        c.gridx = 0; c.gridy = 5;
+        c.gridwidth = 1; c.gridheight = 1;
+        add(paidByLabel,c);
+        c.gridx = 1; c.gridy = 5;
+        c.gridwidth = 2; c.gridheight = 1;
+        add(paidByField,c);
+        c.gridx = 0; c.gridy = 6;
+        c.gridwidth = 3; c.gridheight = 1;
+        add(descriptionLabel,c);
+        c.gridx = 0; c.gridy = 7;
+        c.gridwidth = 3; c.gridheight = 1;
+        add(descriptionTextArea,c);
+        c.gridx = 0; c.gridy = 8;
+        c.gridwidth = 3; c.gridheight = 1;
+        add(addButton,c);
 
         // Set the frame to be visible
         setVisible(true);
+
     }
 
     public static void main(String[] args) {
