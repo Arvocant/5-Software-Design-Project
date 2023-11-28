@@ -3,24 +3,24 @@ package Expense;
 import Person.Person;
 
 public abstract class Expense {
-    private String id;
+    private int id;
     private double amount;
     private Person paidBy;
     //private List<Split> splits;
     private ExpenseDescription description;
 
-    public Expense(String id, double amount, Person paidBy, ExpenseDescription description) {
+    public Expense(int id, double amount, Person paidBy, ExpenseDescription description) {
         this.id = id;
         this.amount = amount;
         this.paidBy = paidBy;
         this.description = description;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

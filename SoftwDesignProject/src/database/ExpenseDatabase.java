@@ -1,16 +1,20 @@
 package database;
 
 import Expense.Expense;
+import Person.Person;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ExpenseDatabase extends database<Expense>{
 
-    private Map<String, Expense> db;
+    private Map<Integer, Expense> db;
     private static ExpenseDatabase instance; //Singleton --> 1 instance
+
+    List<Person> personList;
 
     private ExpenseDatabase() { this.db = new HashMap<>(); } //Constructor --> make new database (which is a HashMap)
 
@@ -43,5 +47,17 @@ public class ExpenseDatabase extends database<Expense>{
     @Override
     public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
         super.removePropertyChangeListener(propertyName, listener);
+    }
+
+    public List<Person> getPersonList() {
+        return personList;
+    }
+
+    public void setPersonList(List<Person> personList) {
+        this.personList = personList;
+    }
+
+    public Person getById(int id){
+        return personList.get(id);
     }
 }

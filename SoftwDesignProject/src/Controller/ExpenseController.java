@@ -31,11 +31,11 @@ public class ExpenseController implements IController {
 
     // all get and set methods from here down
 
-    public String getIdExpense() {
+    public int getIdExpense() {
         return modelExpense.getId();
     }
 
-    public void setIdExpense(String id) {
+    public void setIdExpense(int id) {
         modelExpense.setId(id);
     }
 

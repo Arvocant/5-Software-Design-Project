@@ -22,11 +22,11 @@ public class PersonController implements IController {
         db.addEntry(this.modelPerson);
     }
 
-    public String getIdPerson() {
+    public int getIdPerson() {
         return modelPerson.getId();
     }
 
-    public void setIdPerson(String id) {
+    public void setIdPerson(int id) {
         modelPerson.setId(id);
     }
 

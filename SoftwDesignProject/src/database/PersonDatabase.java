@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class PersonDatabase extends database<Person>{
     private static PersonDatabase instance;
-    private final Map<String, Person> db;
+    private final Map<Integer, Person> db;
 
     private PersonDatabase() {
         this.db = new HashMap<>();

@@ -8,10 +8,13 @@ import Person.Person;
  */
 
 public class FactoryExpense {
+
+    private static int ID;
     public static Expense createExpense(Type expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
         switch (expenseType) {
             case EXACT -> {
-                return new PersonalPayment("ID", amount, paidBy, expenseDescription);
+                ID++;
+                return new PersonalPayment(ID, amount, paidBy, expenseDescription);
             } case EQUAL -> {
                 // code to split the sum equally
                 /*
@@ -22,9 +25,10 @@ public class FactoryExpense {
                  * }
                  * splits.get(0).setAmount(splitAmount + (amount - splitAmount*totalSplits));
                  */
+                ID++;
                 double amountOfPeople = 1;
                 double splitAmount = amount / amountOfPeople;
-                return new UnifiedPayment("ID", splitAmount, paidBy, expenseDescription);
+                return new UnifiedPayment(ID, splitAmount, paidBy, expenseDescription);
             } default -> {
                 return null;
             }
