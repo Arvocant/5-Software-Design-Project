@@ -1,10 +1,12 @@
 package Person;
 
+//Website used as example: https://workat.tech/machine-coding/editorial/how-to-design-splitwise-machine-coding-ayvnfo1tfst6
 public class Person {
     private int id;
     private String name;
     private String email;
     private String phone;
+    private double amount;
 
     public Person(int id, String name, String email, String phone) {
         this.id = id;
@@ -43,5 +45,13 @@ public class Person {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 }

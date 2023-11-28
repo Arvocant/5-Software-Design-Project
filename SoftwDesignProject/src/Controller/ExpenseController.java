@@ -4,7 +4,7 @@ import Expense.Expense;
 import Expense.ExpenseDescription;
 import Person.Person;
 import database.database;
-import View.View;
+import View.Menu;
 
 /*
  * The one that will make changes to the view and to the state of the model
@@ -15,9 +15,9 @@ public class ExpenseController implements IController {
     private Expense modelExpense;
     private database<Expense> db;
 
-    private View view;
+    private Menu view;
 
-    public ExpenseController(Expense model, database<Expense> db, View view) {
+    public ExpenseController(Expense model, database<Expense> db, Menu view) {
         this.modelExpense = model;
         this.db = db;
         this.view = view;

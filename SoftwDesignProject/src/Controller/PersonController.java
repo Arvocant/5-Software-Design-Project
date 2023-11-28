@@ -2,16 +2,16 @@ package Controller;
 
 import Person.Person;
 import database.database;
-import View.View;
+import View.Menu;
 
 public class PersonController implements IController {
 
     private Person modelPerson;
     private database<Person> db;
 
-    private View view;
+    private Menu view;
 
-    public PersonController(Person model, database<Person> db, View view) {
+    public PersonController(Person model, database<Person> db, Menu view) {
         this.modelPerson = model;
         this.db = db;
         this.view = view;
