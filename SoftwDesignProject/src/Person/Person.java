@@ -1,5 +1,10 @@
 package Person;
 
+import Expense.Expense;
+
+import java.util.ArrayList;
+import java.util.List;
+
 //Website used as example: https://workat.tech/machine-coding/editorial/how-to-design-splitwise-machine-coding-ayvnfo1tfst6
 public class Person {
     private int id;
@@ -8,11 +13,14 @@ public class Person {
     private String phone;
     private double amount;
 
+    private List<Integer> expenseIds; // List to store associated expenses
+
     public Person(int id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
+        this.expenseIds = new ArrayList<>();
     }
 
     public int getId() {
@@ -54,4 +62,13 @@ public class Person {
     public void setAmount(double amount) {
         this.amount = amount;
     }
+
+    public List<Integer> getExpenseIds() {
+        return expenseIds;
+    }
+
+    public void addExpenseId(int expenseId) {
+        this.expenseIds.add(expenseId);
+    }
 }
+

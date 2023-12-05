@@ -1,6 +1,13 @@
 
 package View;
 
+import Expense.Expense;
+import Factory.FactoryExpense;
+import Person.Person;
+import database.ExpenseDatabase;
+import database.PersonDatabase;
+import Expense.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -61,7 +68,7 @@ public class Menu extends JFrame {
                 String title = titleField.getText();
                 String name = nameField.getText();
                 String ticketType = (String) ticketTypeComboBox.getSelectedItem();
-                String type = equalRadioButton.isSelected() ? "Equal" : "Exact";
+                ExpenseType type = ExpenseType.valueOf(equalRadioButton.isSelected() ? "EQUAL" : "EXACT");
                 double amount = Double.parseDouble(amountField.getText());
                 String paidBy = paidByField.getText();
                 String description = descriptionTextArea.getText();
@@ -74,64 +81,143 @@ public class Menu extends JFrame {
                 System.out.println("Amount: " + amount);
                 System.out.println("Paid By: " + paidBy);
                 System.out.println("Description: " + description);
+
+                PersonDatabase personDatabase = PersonDatabase.getInstance();
+                ExpenseDatabase expenseDatabase = ExpenseDatabase.getInstance();
+
+                //Get person by name
+                Person person = personDatabase.getEntryByName(paidBy);
+
+                // If the person doesn't exist, create a new person
+                if (person == null) {
+                    int personId = PersonDatabase.getNextPersonId(); // Assuming you have a method to get the next ID
+                    person = new Person(personId, paidBy, "", "");
+                    personDatabase.addEntry(person);
+
+//                    // Check if the person was added successfully
+//                    Person addedPerson = PersonDatabase.getEntry(personId);
+//                    if (addedPerson != null) {
+//                        System.out.println("New person added successfully: " + addedPerson.getName());
+//                    } else {
+//                        System.out.println("Error adding new person.");
+//                        return; // Exit the method if there's an error
+//                    }
+
+                }
+
+
+
+                //Create an expense
+                int expenseId = ExpenseDatabase.getNextExpenseId(); // Assuming you have a method to get the next ID
+                ExpenseDescription desc = new ExpenseDescription(name, description);
+                Expense expense = FactoryExpense.createExpense(type, amount, person, desc);
+                expenseDatabase.addEntry(expense);
+
+                // Check if the expense was added successfully
+                if (expenseDatabase.getEntry(expenseId) != null) {
+                    System.out.println("New expense added successfully for person: " + person.getName());
+                } else {
+                    System.out.println("Error adding new expense.");
+                }
+
+                // Add the expense ID to the person's expense list
+                person.addExpenseId(expenseId);
+
+                //db.addEntry(p);
+
+
+
             }
         });
 
-        // Add components to the frame
-        c.gridx = 0; c.gridy = 0;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(titleLabel,c);
-        c.gridx = 1; c.gridy = 0;
-        c.gridwidth = 2; c.gridheight = 1;
-        add(titleField,c);
-        c.gridx = 0; c.gridy = 1;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(nameLabel,c);
-        c.gridx = 1; c.gridy = 1;
-        c.gridwidth = 2; c.gridheight = 1;
-        add(nameField,c);
-        c.gridx = 0; c.gridy = 2;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(ticketTypeLabel,c);
-        c.gridx = 1; c.gridy = 2;
-        c.gridwidth = 2; c.gridheight = 1;
-        add(ticketTypeComboBox,c);
+        {
+            // Add components to the frame
+            c.gridx = 0;
+            c.gridy = 0;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(titleLabel, c);
+            c.gridx = 1;
+            c.gridy = 0;
+            c.gridwidth = 2;
+            c.gridheight = 1;
+            add(titleField, c);
+            c.gridx = 0;
+            c.gridy = 1;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(nameLabel, c);
+            c.gridx = 1;
+            c.gridy = 1;
+            c.gridwidth = 2;
+            c.gridheight = 1;
+            add(nameField, c);
+            c.gridx = 0;
+            c.gridy = 2;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(ticketTypeLabel, c);
+            c.gridx = 1;
+            c.gridy = 2;
+            c.gridwidth = 2;
+            c.gridheight = 1;
+            add(ticketTypeComboBox, c);
 
-        c.gridx = 0; c.gridy = 3;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(radioButtonLabel,c);
-        c.gridx = 1; c.gridy = 3;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(equalRadioButton,c);
-        c.gridx = 2; c.gridy = 3;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(exactRadioButton,c);
+            c.gridx = 0;
+            c.gridy = 3;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(radioButtonLabel, c);
+            c.gridx = 1;
+            c.gridy = 3;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(equalRadioButton, c);
+            c.gridx = 2;
+            c.gridy = 3;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(exactRadioButton, c);
 
-        c.gridx = 0; c.gridy = 4;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(amountLabel,c);
-        c.gridx = 1; c.gridy = 4;
-        c.gridwidth = 2; c.gridheight = 1;
-        add(amountField,c);
-        c.gridx = 0; c.gridy = 5;
-        c.gridwidth = 1; c.gridheight = 1;
-        add(paidByLabel,c);
-        c.gridx = 1; c.gridy = 5;
-        c.gridwidth = 2; c.gridheight = 1;
-        add(paidByField,c);
-        c.gridx = 0; c.gridy = 6;
-        c.gridwidth = 3; c.gridheight = 1;
-        add(descriptionLabel,c);
-        c.gridx = 0; c.gridy = 7;
-        c.gridwidth = 3; c.gridheight = 1;
-        add(descriptionTextArea,c);
-        c.gridx = 0; c.gridy = 8;
-        c.gridwidth = 3; c.gridheight = 1;
-        add(addButton,c);
+            c.gridx = 0;
+            c.gridy = 4;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(amountLabel, c);
+            c.gridx = 1;
+            c.gridy = 4;
+            c.gridwidth = 2;
+            c.gridheight = 1;
+            add(amountField, c);
+            c.gridx = 0;
+            c.gridy = 5;
+            c.gridwidth = 1;
+            c.gridheight = 1;
+            add(paidByLabel, c);
+            c.gridx = 1;
+            c.gridy = 5;
+            c.gridwidth = 2;
+            c.gridheight = 1;
+            add(paidByField, c);
+            c.gridx = 0;
+            c.gridy = 6;
+            c.gridwidth = 3;
+            c.gridheight = 1;
+            add(descriptionLabel, c);
+            c.gridx = 0;
+            c.gridy = 7;
+            c.gridwidth = 3;
+            c.gridheight = 1;
+            add(descriptionTextArea, c);
+            c.gridx = 0;
+            c.gridy = 8;
+            c.gridwidth = 3;
+            c.gridheight = 1;
+            add(addButton, c);
 
-        // Set the frame to be visible
-        setVisible(true);
-
+            // Set the frame to be visible
+            setVisible(true);
+        } //Section
     }
 
     public static void main(String[] args) {

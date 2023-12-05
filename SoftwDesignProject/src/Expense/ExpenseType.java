@@ -1,6 +1,6 @@
 package Expense;
 
-public enum Type {
+public enum ExpenseType {
     EQUAL,
     EXACT
 }

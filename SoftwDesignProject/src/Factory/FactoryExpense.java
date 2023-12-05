@@ -10,7 +10,7 @@ import Person.Person;
 public class FactoryExpense {
 
     private static int ID;
-    public static Expense createExpense(Type expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
+    public static Expense createExpense(ExpenseType expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
         switch (expenseType) {
             case EXACT -> {
                 ID++;

@@ -14,7 +14,7 @@ public class ExpenseDatabase extends database<Expense>{
     private Map<Integer, Expense> db;
     private static ExpenseDatabase instance; //Singleton --> 1 instance
 
-
+    private static int nextExpenseId = 1; // Next available expense ID
 
     private ExpenseDatabase() { this.db = new HashMap<>(); } //Constructor --> make new database (which is a HashMap)
 
@@ -37,6 +37,10 @@ public class ExpenseDatabase extends database<Expense>{
     @Override
     public Expense getEntry(int id) {
         return db.get(id);
+    }
+    
+    public static int getNextExpenseId() {
+        return nextExpenseId++;
     }
 
     @Override
