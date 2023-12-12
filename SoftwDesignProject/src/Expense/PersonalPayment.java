@@ -1,16 +1,32 @@
 package Expense;
 
+import Payment.ExactPayment;
+import Payment.Split;
 import Person.Person;
+
+import java.util.List;
 
 public class PersonalPayment extends Expense{
 
-    public PersonalPayment(int id, double amount, Person paidBy, ExpenseDescription description) {
-        super(id, amount, paidBy, description);
+    public PersonalPayment(double amount, Person paidBy, List<Split> payments, ExpenseDescription description) {
+        super(amount, paidBy, payments, description);
     }
 
     @Override
     public boolean validate() {
-        return false;
+        //for (Split payments : getPayments()){
+        //  if (!(payments instanceof ExactPayment))
+        //      return false;
+        //}
+
+        double total = getAmount();
+        double sum = 0;
+        for (Split payment : getPayments()){
+            ExactPayment exactAmount = (ExactPayment) payment;
+            sum += exactAmount.getAmount();
+        }
+
+        return total == sum;
     }
 
 }
