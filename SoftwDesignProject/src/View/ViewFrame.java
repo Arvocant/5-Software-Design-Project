@@ -5,6 +5,7 @@ import Expense.Expense;
 import Expense.ExpenseDescription;
 import Expense.ExpenseType;
 import Factory.FactoryExpense;
+import Payment.EqualPayment;
 import Payment.ExactPayment;
 import Payment.Split;
 import Person.Person;
@@ -16,6 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ViewFrame extends JFrame {
     GridBagConstraints c;
+    ArrayList<Split> splitList;
 
     public ViewFrame()
     {
@@ -34,7 +36,6 @@ public class ViewFrame extends JFrame {
     }
 
     public void updateView(PersonController pc) {
-        ArrayList<Split> splitList = new ArrayList<>();
         // components
 
         JLabel nameExpenseLabel = new JLabel("Title Expense:");
@@ -45,11 +46,24 @@ public class ViewFrame extends JFrame {
         String[] ticketTypes = {"Flight", "Restaurant", "Cinema", "Others"};
         JComboBox<String> ticketTypeComboBox = new JComboBox<>(ticketTypes);
 
+        JLabel amountLabel = new JLabel("Amount:");
+        JTextField amountField = new JTextField(20);
+
         JLabel radioButtonLabel = new JLabel("Type:");
         JRadioButton equalRadioButton = new JRadioButton("Equal");
         JRadioButton exactRadioButton = new JRadioButton("Exact");
         ButtonGroup radioButtonGroup = new ButtonGroup();
         radioButtonGroup.add(equalRadioButton);
+
+        equalRadioButton.addActionListener(e -> {
+            splitList = new ArrayList<>();
+            int amountOfPeople = pc.getAllPersons().length;
+            for (int i=0; i<amountOfPeople; i++) {
+                splitList.add(new EqualPayment(pc.getPersonOutOfDb(pc.getAllPersons()[i])));
+            }
+            
+        });
+
         radioButtonGroup.add(exactRadioButton);
 
         exactRadioButton.addActionListener(e -> {
@@ -63,9 +77,6 @@ public class ViewFrame extends JFrame {
             panel.setLayout(layout);
             exactFrame.add(panel);
         });
-
-        JLabel amountLabel = new JLabel("Amount:");
-        JTextField amountField = new JTextField(20);
 
         JLabel paidByLabel = new JLabel("Paid By:");
         String[] paidByList = pc.getAllPersons();
@@ -117,27 +128,27 @@ public class ViewFrame extends JFrame {
                 c.gridheight = 1;
                 add(ticketTypeComboBox, c);
                 c.gridx = 0;
-                c.gridy = 2;
+                c.gridy = 3;
                 c.gridwidth = 1;
                 c.gridheight = 1;
                 add(radioButtonLabel, c);
                 c.gridx = 1;
-                c.gridy = 2;
+                c.gridy = 3;
                 c.gridwidth = 1;
                 c.gridheight = 1;
                 add(equalRadioButton, c);
                 c.gridx = 2;
-                c.gridy = 2 ;
+                c.gridy = 3 ;
                 c.gridwidth = 1;
                 c.gridheight = 1;
                 add(exactRadioButton, c);
                 c.gridx = 0;
-                c.gridy = 4;
+                c.gridy = 2;
                 c.gridwidth = 1;
                 c.gridheight = 1;
                 add(amountLabel, c);
                 c.gridx = 1;
-                c.gridy = 4;
+                c.gridy = 2;
                 c.gridwidth = 2;
                 c.gridheight = 1;
                 add(amountField, c);
