@@ -65,34 +65,34 @@ public class PersonDatabase extends database<Person>{
         super.removePropertyChangeListener(propertyName, listener);
     }
 
-    public void addExpenseToPerson(int personId, int expenseId, ExpenseDatabase expenseDatabase) {
-        Person person = getEntry(personId);
-        Expense expense = expenseDatabase.getEntry(expenseId);
-
-        if (person != null && expense != null) {
-            person.addExpenseId(expenseId);
-        }
-    }
-
-    public List<Expense> getPersonExpenses(int personId, ExpenseDatabase expenseDatabase) {
-        Person person = getEntry(personId);
-
-        if (person != null) {
-            List<Integer> expenseIds = person.getExpenseIds();
-            List<Expense> personExpenses = new ArrayList<>();
-
-            for (int expenseId : expenseIds) {
-                Expense expense = expenseDatabase.getEntry(expenseId);
-                if (expense != null) {
-                    personExpenses.add(expense);
-                }
-            }
-
-            return personExpenses;
-        }
-
-        return new ArrayList<>(); // Return an empty list if the person is not found
-    }
+//    public void addExpenseToPerson(int personId, int expenseId, ExpenseDatabase expenseDatabase) {
+//        Person person = getEntry(personId);
+//        Expense expense = expenseDatabase.getEntry(expenseId);
+//
+//        if (person != null && expense != null) {
+//            person.addExpenseId(expenseId);
+//        }
+//    }
+//
+//    public List<Expense> getPersonExpenses(int personId, ExpenseDatabase expenseDatabase) {
+//        Person person = getEntry(personId);
+//
+//        if (person != null) {
+//            List<Integer> expenseIds = person.getExpenseIds();
+//            List<Expense> personExpenses = new ArrayList<>();
+//
+//            for (int expenseId : expenseIds) {
+//                Expense expense = expenseDatabase.getEntry(expenseId);
+//                if (expense != null) {
+//                    personExpenses.add(expense);
+//                }
+//            }
+//
+//            return personExpenses;
+//        }
+//
+//        return new ArrayList<>(); // Return an empty list if the person is not found
+//    }
 
 
 //    public List<Expense> getExpenseList() {

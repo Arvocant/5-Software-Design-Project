@@ -1,15 +1,24 @@
 package Expense;
 
+import Payment.Split;
 import Person.Person;
+import Payment.*;
+
+import java.util.List;
 
 public class UnifiedPayment extends Expense{
 
-    public UnifiedPayment(int id, double amount, Person paidBy, ExpenseDescription description) {
-        super(id, amount, paidBy, description);
+    public UnifiedPayment(double amount, Person paidBy, List<Split> payments, ExpenseDescription description) {
+        super(amount, paidBy, payments ,description);
     }
 
     @Override
     public boolean validate() {
+        for (Split payment : getPayments()){
+           if (payment instanceof EqualPayment){
+               return true;
+           }
+        }
         return false;
     }
 }

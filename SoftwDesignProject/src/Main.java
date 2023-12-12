@@ -1,17 +1,49 @@
 import Controller.ExpenseController;
+import Expense.Expense;
 import Person.Person;
+import database.ExpenseDatabase;
+import database.PersonDatabase;
+import Expense.ExpenseDescription;
+import Expense.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Math.E;
+
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
+        Main main = new Main();
+        main.run();
+    }
+
+    public Main()
+    {
+
+    }
+    public void run() {
 
 
+        PersonDatabase persondb = PersonDatabase.getInstance();
+        ExpenseDatabase expensedb = ExpenseDatabase.getInstance();
 
-        //ExpenseController expenseController = new ExpenseController();
+        Person p1 = new Person(1, "Perry", "PerryPlatypus@work.com", "0485123456");
+        Person p2 = new Person(2, "Emma", "Emma@work.com", "0485123456");
+        Person p3 = new Person(3, "Mats", "Mats@gmail.com", "0485123456");
+
+        persondb.addEntry(p1);
+        persondb.addEntry(p2);
+        persondb.addEntry(p3);
+
+        ExpenseDescription description = new ExpenseDescription("Perry", "All good!");
+
+        //expensedb.addEntry(new UnifiedPayment( 36.3, p1, List<Split> payments, description));
+
+
+        // ExpenseController expenseController = new ExpenseController();
 
         /*
         expenseManager.addUser(new Person("u1", "User1", "gaurav@workat.tech", "9876543210"));
@@ -66,6 +98,7 @@ public class Main {
 
 
     }
+    public void view(Person p){
 
-
+    }
 }

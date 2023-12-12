@@ -108,7 +108,7 @@ public class Menu extends JFrame {
 
 
                 //Create an expense
-                int expenseId = ExpenseDatabase.getNextExpenseId(); // Assuming you have a method to get the next ID
+                int expenseId = ExpenseDatabase.getNextExpenseId(); //method to get the next ID
                 ExpenseDescription desc = new ExpenseDescription(name, description);
                 Expense expense = FactoryExpense.createExpense(type, amount, person, desc);
                 expenseDatabase.addEntry(expense);

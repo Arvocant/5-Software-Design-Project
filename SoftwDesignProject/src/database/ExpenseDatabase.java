@@ -22,10 +22,10 @@ public class ExpenseDatabase extends database<Expense>{
         if (instance == null)
             instance = new ExpenseDatabase();
         return instance;
-    } //Get instance (bcs singleton)
+    }
 
     @Override
-    public void addEntry(Expense expense) {
+    public void addEntry(Expense expense) { //addExpense
         if (expense != null && !db.containsKey(expense.getId())) { //Check if there is an expense and if an ID was given
             this.db.put(expense.getId(), expense); //Put's the new expense with the given ID in the Hashmap
             PropertyChangeEvent event = new PropertyChangeEvent(this, "addExpense", null, expense);

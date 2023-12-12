@@ -1,18 +1,22 @@
 package Expense;
 
+import Payment.Split;
 import Person.Person;
+
+import java.util.List;
 
 public abstract class Expense {
     private int id;
     private double amount;
     private Person paidBy;
-    //private List<Split> splits;
+
+    private List<Split> payments;
     private ExpenseDescription description;
 
-    public Expense(int id, double amount, Person paidBy, ExpenseDescription description) {
-        this.id = id;
+    public Expense(double amount, Person paidBy, List<Split> payments, ExpenseDescription description) {
         this.amount = amount;
         this.paidBy = paidBy;
+        this.payments = payments;
         this.description = description;
     }
 
@@ -38,6 +42,14 @@ public abstract class Expense {
 
     public void setPaidBy(Person paidBy) {
         this.paidBy = paidBy;
+    }
+
+    public List<Split> getPayments(){
+        return payments;
+    }
+
+    public void setPayments(List<Split> payments){
+        this.payments = payments;
     }
 
     public ExpenseDescription getDescription() {

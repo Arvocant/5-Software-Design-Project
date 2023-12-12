@@ -1,7 +1,10 @@
 package Factory;
 
 import Expense.*;
+import Payment.Split;
 import Person.Person;
+
+import java.util.List;
 
 /*
  * is the equivalent of the ExpenseService from our example
@@ -9,26 +12,19 @@ import Person.Person;
 
 public class FactoryExpense {
 
-    private static int ID;
-    public static Expense createExpense(ExpenseType expenseType, double amount, Person paidBy, ExpenseDescription expenseDescription) {
+    public static Expense createExpense(ExpenseType expenseType, double amount, Person paidBy, List<Split> payments, ExpenseDescription expenseDescription) {
         switch (expenseType) {
             case EXACT -> {
-                ID++;
-                return new PersonalPayment(ID, amount, paidBy, expenseDescription);
+                return new PersonalPayment(amount, paidBy, payments, expenseDescription);
             } case EQUAL -> {
                 // code to split the sum equally
-                /*
-                 * int totalSplits = splits.size();
-                 * double splitAmount = ((double) Math.round(amount*100/totalSplits))/100.0;
-                 * for (Split split : splits) {
-                 *     split.setAmount(splitAmount);
-                 * }
-                 * splits.get(0).setAmount(splitAmount + (amount - splitAmount*totalSplits));
-                 */
-                ID++;
-                double amountOfPeople = 1;
-                double splitAmount = amount / amountOfPeople;
-                return new UnifiedPayment(ID, splitAmount, paidBy, expenseDescription);
+                int totalPayments = payments.size();
+                double howMuchOwed = ((double) Math.round(amount*100/totalPayments))/100.0;
+                for (Split payment : payments) {
+                    payment.setAmount(howMuchOwed);
+                }
+                payments.get(0).setAmount(howMuchOwed + (amount - howMuchOwed*totalPayments));
+                return new UnifiedPayment(howMuchOwed, paidBy, payments, expenseDescription);
             } default -> {
                 return null;
             }

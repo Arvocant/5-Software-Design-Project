@@ -11,16 +11,16 @@ public class Person {
     private String name;
     private String email;
     private String phone;
-    private double amount;
+    //private double amount;
 
-    private List<Integer> expenseIds; // List to store associated expenses
+    //private List<Integer> expenseIds; // List to store associated expenses
 
     public Person(int id, String name, String email, String phone) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.expenseIds = new ArrayList<>();
+        //this.expenseIds = new ArrayList<>();
     }
 
     public int getId() {
@@ -55,20 +55,20 @@ public class Person {
         this.phone = phone;
     }
 
-    public double getAmount() {
-        return amount;
-    }
-
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
-
-    public List<Integer> getExpenseIds() {
-        return expenseIds;
-    }
-
-    public void addExpenseId(int expenseId) {
-        this.expenseIds.add(expenseId);
-    }
+//    public double getAmount() {
+//        return amount;
+//    }
+//
+//    public void setAmount(double amount) {
+//        this.amount = amount;
+//    }
+//
+//    public List<Integer> getExpenseIds() {
+//        return expenseIds;
+//    }
+//
+//    public void addExpenseId(int expenseId) {
+//        this.expenseIds.add(expenseId);
+//    }
 }
 
