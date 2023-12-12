@@ -3,6 +3,7 @@ package Controller;
 import Expense.Expense;
 import Expense.ExpenseDescription;
 import Person.Person;
+import View.ViewFrame;
 import database.database;
 import View.Menu;
 
@@ -15,9 +16,9 @@ public class ExpenseController implements IController {
     private Expense modelExpense;
     private database<Expense> db;
 
-    private Menu view;
+    private ViewFrame view;
 
-    public ExpenseController(Expense model, database<Expense> db, Menu view) {
+    public ExpenseController(Expense model, database<Expense> db, ViewFrame view) {
         this.modelExpense = model;
         this.db = db;
         this.view = view;

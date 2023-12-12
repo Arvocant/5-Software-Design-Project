@@ -1,17 +1,20 @@
 package Controller;
 
 import Person.Person;
+import View.ViewFrame;
 import database.database;
-import View.Menu;
+
+import java.util.ArrayList;
+import java.util.Map;
 
 public class PersonController implements IController {
 
     private Person modelPerson;
     private database<Person> db;
 
-    private Menu view;
+    private ViewFrame view;
 
-    public PersonController(Person model, database<Person> db, Menu view) {
+    public PersonController(Person model, database<Person> db, ViewFrame view) {
         this.modelPerson = model;
         this.db = db;
         this.view = view;
@@ -20,6 +23,18 @@ public class PersonController implements IController {
     @Override
     public void addToDb() {
         db.addEntry(this.modelPerson);
+    }
+
+    public Person getModelPerson() {
+        return modelPerson;
+    }
+
+    public void setModelPerson(Person modelPerson) {
+        this.modelPerson = modelPerson;
+    }
+
+    public Person getPersonOutOfDb(String name) {
+        return this.db.getEntryByName(name);
     }
 
     public int getIdPerson() {
@@ -52,6 +67,16 @@ public class PersonController implements IController {
 
     public void setPhonePerson(String phone) {
         modelPerson.setPhone(phone);
+    }
+
+    public String[] getAllPersons() {
+        ArrayList<String> AllPerson = new ArrayList<>();
+        Map<Integer, Person> mapList = this.db.getDb();
+        for (Person value : mapList.values()) {
+            AllPerson.add(value.toString());
+        }
+
+        return AllPerson.toArray(new String[0]);
     }
 
     @Override

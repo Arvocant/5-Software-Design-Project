@@ -38,7 +38,22 @@ public class ExpenseDatabase extends database<Expense>{
     public Expense getEntry(int id) {
         return db.get(id);
     }
-    
+
+    @Override
+    public Expense getEntryByName(String name) {
+        for (Expense exp : db.values()) {
+            if (exp.getDescription().getName().equals(name)) {
+                return exp;
+            }
+        }
+        return null; // Expense not found
+    }
+
+    @Override
+    public Map<Integer, Expense> getDb() {
+        return db;
+    }
+
     public static int getNextExpenseId() {
         return nextExpenseId++;
     }

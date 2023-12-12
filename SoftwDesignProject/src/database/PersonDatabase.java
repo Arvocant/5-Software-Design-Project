@@ -55,6 +55,10 @@ public class PersonDatabase extends database<Person>{
         return nextPersonId++;
     }
 
+    public Map<Integer, Person> getDb() {
+        return db;
+    }
+
     @Override
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
         super.addPropertyChangeListener(propertyName, listener);

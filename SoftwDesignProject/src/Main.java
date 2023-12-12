@@ -1,6 +1,8 @@
 import Controller.ExpenseController;
+import Controller.PersonController;
 import Expense.Expense;
 import Person.Person;
+import View.ViewFrame;
 import database.ExpenseDatabase;
 import database.PersonDatabase;
 import Expense.ExpenseDescription;
@@ -26,6 +28,8 @@ public class Main {
     }
     public void run() {
 
+        ViewFrame view = new ViewFrame();
+        view.Initialize();
 
         PersonDatabase persondb = PersonDatabase.getInstance();
         ExpenseDatabase expensedb = ExpenseDatabase.getInstance();
@@ -39,6 +43,8 @@ public class Main {
         persondb.addEntry(p3);
 
         ExpenseDescription description = new ExpenseDescription("Perry", "All good!");
+
+        view.updateView(new PersonController(persondb.getEntry(1),persondb,view));
 
         //expensedb.addEntry(new UnifiedPayment( 36.3, p1, List<Split> payments, description));
 

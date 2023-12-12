@@ -55,10 +55,10 @@ public class Person {
         this.phone = phone;
     }
 
-//    public double getAmount() {
-//        return amount;
-//    }
-//
+    @Override
+    public String toString() {
+        return this.name;
+    }
 //    public void setAmount(double amount) {
 //        this.amount = amount;
 //    }
