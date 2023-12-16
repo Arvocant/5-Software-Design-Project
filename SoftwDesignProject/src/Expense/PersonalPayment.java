@@ -26,7 +26,7 @@ public class PersonalPayment extends Expense{
             sum += exactAmount.getAmount();
         }
 
-        return total == sum;
+        return total == sum; //return's true if value of total equals that of sum
     }
 
 }
