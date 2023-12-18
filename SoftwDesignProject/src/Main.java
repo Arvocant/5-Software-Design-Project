@@ -1,19 +1,19 @@
-import Controller.ExpenseController;
-import Controller.PersonController;
-import Expense.Expense;
+
+import Factory.FactoryExpense;
+import Payment.EqualPayment;
+import Payment.ExactPayment;
+import Payment.Split;
 import Person.Person;
-import View.ViewFrame;
 import database.ExpenseDatabase;
 import database.PersonDatabase;
-import Expense.ExpenseDescription;
 import Expense.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import static java.lang.Math.E;
-
 
 public class Main {
     public static void main(String[] args)
@@ -26,85 +26,78 @@ public class Main {
     {
 
     }
-    public void run() {
 
-        ViewFrame view = new ViewFrame();
-        view.Initialize();
+    public void run() {
 
         PersonDatabase persondb = PersonDatabase.getInstance();
         ExpenseDatabase expensedb = ExpenseDatabase.getInstance();
 
+        // GUI try
+        // StartFrame start = new StartFrame(persondb);
+
+        // Tests w/out GUI
+
         Person p1 = new Person(1, "Perry", "PerryPlatypus@work.com", "0485123456");
         Person p2 = new Person(2, "Emma", "Emma@work.com", "0485123456");
         Person p3 = new Person(3, "Mats", "Mats@gmail.com", "0485123456");
+        
 
         persondb.addEntry(p1);
         persondb.addEntry(p2);
         persondb.addEntry(p3);
+        
+        /*
+         * p2 owes p1 300
+         * p3 owes p1 300
+         */
+        List<Split> splitList1 = new ArrayList<>(); splitList1.add(new EqualPayment(p2)); splitList1.add(new EqualPayment(p3));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EQUAL, 900, p1, splitList1 , new ExpenseDescription("Vliegtickets", "payment door 1")));
+        
+        /*
+         * p1 owes p2 10
+         * p3 owes p2 10
+         */
+        List<Split> splitList2 = new ArrayList<>(); splitList2.add(new EqualPayment(p1)); splitList2.add(new EqualPayment(p3));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EQUAL, 30, p2, splitList2, new ExpenseDescription("Cinema", "FFAF Movie")));
+        
+        /*
+         * p2 owes p1 22
+         * p3 owes p1 22
+         */
+        List<Split> splitList3 = new ArrayList<>(); splitList3.add(new EqualPayment(p2)); splitList3.add(new EqualPayment(p3));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EQUAL, 66, p1, splitList3, new ExpenseDescription("Matching Necklaces", "To remember out friendship")));
+        
+        /*
+         * p1 owes p3 250
+         * p2 owes p3 178
+         * p3 paid 72 for himself
+         */
+        List<Split> splitList4 = new ArrayList<>(); splitList4.add(new ExactPayment(p1, 250)); splitList4.add(new ExactPayment(p2,178));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EXACT, 500, p3, splitList4, new ExpenseDescription("Shopping", "These idiots forget their wallet")));
 
-        ExpenseDescription description = new ExpenseDescription("Perry", "All good!");
-
-        view.updateView(new PersonController(persondb.getEntry(1),persondb,view));
-
-        //expensedb.addEntry(new UnifiedPayment( 36.3, p1, List<Split> payments, description));
-
-
-        // ExpenseController expenseController = new ExpenseController();
+        for (int key : expensedb.getDb().keySet())
+            System.out.println(key);
 
         /*
-        expenseManager.addUser(new Person("u1", "User1", "gaurav@workat.tech", "9876543210"));
-        expenseManager.addUser(new Person("u2", "User2", "sagar@workat.tech", "9876543210"));
-        expenseManager.addUser(new Person("u3", "User3", "hi@workat.tech", "9876543210"));
-        expenseManager.addUser(new Person("u4", "User4", "mock-interviews@workat.tech", "9876543210"));
-
-        Scanner scanner = new Scanner(System.in);
-        while (true) {
-            String command = scanner.nextLine();
-            String[] commands = command.split(" ");
-            String commandType = commands[0];
-
-            switch (commandType) {
-                case "SHOW" -> {
-                    if (commands.length == 1) {
-                        expenseManager.showBalances();
-                    } else {
-                        expenseManager.showBalance(commands[1]);
-                    }
-                }
-                case "EXPENSE" -> {
-                    String paidBy = commands[1];
-                    Double amount = Double.parseDouble(commands[2]);
-                    int noOfUsers = Integer.parseInt(commands[3]);
-                    String expenseType = commands[4 + noOfUsers];
-                    List<Split> splits = new ArrayList<>();
-                    switch (expenseType) {
-                        case "EQUAL" -> {
-                            for (int i = 0; i < noOfUsers; i++) {
-                                splits.add(new EqualSplit(expenseManager.userMap.get(commands[4 + i])));
-                            }
-                            expenseManager.addExpense(ExpenseType.EQUAL, amount, paidBy, splits, null);
-                        }
-                        case "EXACT" -> {
-                            for (int i = 0; i < noOfUsers; i++) {
-                                splits.add(new ExactSplit(expenseManager.userMap.get(commands[4 + i]), Double.parseDouble(commands[5 + noOfUsers + i])));
-                            }
-                            expenseManager.addExpense(ExpenseType.EXACT, amount, paidBy, splits, null);
-                        }
-                        case "PERCENT" -> {
-                            for (int i = 0; i < noOfUsers; i++) {
-                                splits.add(new PercentSplit(expenseManager.userMap.get(commands[4 + i]), Double.parseDouble(commands[5 + noOfUsers + i])));
-                            }
-                            expenseManager.addExpense(ExpenseType.PERCENT, amount, paidBy, splits, null);
-                        }
-                    }
-                }
-            }
-        }
+         * p1 owes p2 = 10              -> 0
+         * p1 owes p3 = 250             -> 0
+         * 
+         * p2 owes p1 = 300 + 22 = 322  -> 312
+         * p2 owes p3 = 178             -> 168
+         * 
+         * p3 owes p1 = 300 + 22 = 322  -> 72
+         * p3 owes p2 = 10              -> 0
          */
-
+        printDebtList(expensedb.calculateTotal());
 
     }
-    public void view(Person p){
 
+    public void printDebtList(Map<Integer, Map<Integer, Double>> balanceSheet) {
+        for (int PaidById : balanceSheet.keySet()) {
+            Map<Integer, Double> temp = balanceSheet.get(PaidById);
+            for (int inDebt : temp.keySet()) {
+                System.out.println(inDebt + " has to pay " + temp.get(inDebt) + "euro to " + PaidById);
+            }
+        }
     }
 }

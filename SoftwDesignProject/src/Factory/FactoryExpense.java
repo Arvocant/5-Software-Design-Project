@@ -17,25 +17,13 @@ public class FactoryExpense {
             case EXACT -> {
                 return new PersonalPayment(amount, paidBy, payments, expenseDescription);
             }
-//            case EQUAL -> {
-//                // code to split the sum equally
-//                int totalPayments = payments.size();
-//                double howMuchOwed = ((double) Math.round(amount*100/totalPayments))/100.0;
-//                for (Split payment : payments) {
-//                    payment.setAmount(howMuchOwed);
-//                }
-//
-//
-//                payments.get(0).setAmount(howMuchOwed + (amount - howMuchOwed*totalPayments));
-//                return new UnifiedPayment(howMuchOwed, paidBy, payments, expenseDescription);
             case EQUAL ->{
-                 int totalSplits = payments.size();
-                 double splitAmount = ((double) Math.round(amount * 100 / totalSplits)) / 100.0;
+                int totalSplits = payments.size();
+                double splitAmount = ((double) Math.round(amount * 100 / (totalSplits+1))) / 100.0;
 
-                 for (int i = 0; i < totalSplits; i++) {
-                     double adjustedAmount = splitAmount + (amount - splitAmount * totalSplits) * (i == 0 ? 1 : 0);
-                     payments.get(i).setAmount(adjustedAmount);
-                 }
+                for (int i = 0; i < totalSplits; i++) {
+                    payments.get(i).setAmount(splitAmount);
+                }
 
                  return new UnifiedPayment(amount, paidBy, payments, expenseDescription);
             } default -> {
