@@ -1,14 +1,11 @@
 package database;
 
 import Expense.Expense;
-import Payment.Split;
-import Person.Person;
 import Expense.BalanceCalculator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ExpenseDatabase extends database<Expense>{
@@ -68,15 +65,13 @@ public class ExpenseDatabase extends database<Expense>{
         return balanceCalculator.calculateTotal(db);
     }
 
-    public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts() {
-        return balanceCalculator.calculateIndividualAmounts(db);
+    public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts(int userId) {
+        return balanceCalculator.calculateIndividualAmounts(db, userId);
     }
 
     public double getBalanceForUser(int userId) {
         return balanceCalculator.getBalanceForUser(userId);
     }
-
-
 
     @Override
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {

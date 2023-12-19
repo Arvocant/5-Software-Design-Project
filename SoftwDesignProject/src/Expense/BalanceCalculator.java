@@ -24,7 +24,7 @@ public class BalanceCalculator {
         return balanceSheet;
     }
 
-    public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts(Map<Integer, Expense> expenses) {
+    public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts(Map<Integer, Expense> expenses, int userId) {
         Map<Integer, Map<Integer, Double>> individualAmounts = new HashMap<>();
 
         for (Expense expenseInDb : expenses.values()) {
@@ -32,12 +32,28 @@ public class BalanceCalculator {
                 int inDebtId = split.getPerson().getId();
 
                 // calculations for the individual amounts
-                updateBalance(individualAmounts, expenseInDb.getPaidBy().getId(), inDebtId, split.getAmount());
+                if (userId == expenseInDb.getPaidBy().getId()) {
+                    // If the user paid the expense, deduct the amount from their balance
+                    updateIndividualAmounts(individualAmounts, userId, inDebtId, -split.getAmount());
+                } else if (userId == inDebtId) {
+                    // If the user is in debt, add the amount to their balance
+                    updateIndividualAmounts(individualAmounts, userId, expenseInDb.getPaidBy().getId(), split.getAmount());
+                }
             }
         }
 
         return individualAmounts;
     }
+
+    private void updateIndividualAmounts(Map<Integer, Map<Integer, Double>> individualAmounts, int fromUserId, int toUserId, double amount) {
+        if (!individualAmounts.containsKey(fromUserId)) {
+            individualAmounts.put(fromUserId, new HashMap<>());
+        }
+
+        Map<Integer, Double> balances = individualAmounts.get(fromUserId);
+        balances.put(toUserId, balances.getOrDefault(toUserId, 0.0) + amount);
+    }
+
 
     private void updateBalance(Map<Integer, Map<Integer, Double>> balanceSheet, int fromUserId, int toUserId, double amount) {
         if (!balanceSheet.containsKey(fromUserId)) {
