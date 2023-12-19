@@ -71,7 +71,7 @@ public class PersonController implements IController {
 
     public String[] getAllPersons() {
         ArrayList<String> AllPerson = new ArrayList<>();
-        Map<Integer, Person> mapList = this.db.getDb();
+        Map<Integer, Person> mapList = this.db.getAllExpenses();
         for (Person value : mapList.values()) {
             AllPerson.add(value.toString());
         }

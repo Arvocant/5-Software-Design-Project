@@ -13,11 +13,11 @@ public abstract class database<T> {
     }
 
     public abstract void addEntry(T entry);
-    public abstract T getEntry(int id);
+    public abstract T getExpense(int id);
 
     public abstract T getEntryByName(String name);
 
-    public abstract Map<Integer, T> getDb();
+    public abstract Map<Integer, T> getAllExpenses();
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 

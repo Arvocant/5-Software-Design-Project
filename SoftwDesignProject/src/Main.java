@@ -11,9 +11,6 @@ import Expense.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
-
-import static java.lang.Math.E;
 
 public class Main {
     public static void main(String[] args)
@@ -75,7 +72,7 @@ public class Main {
         List<Split> splitList4 = new ArrayList<>(); splitList4.add(new ExactPayment(p1, 250)); splitList4.add(new ExactPayment(p2,178));
         expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EXACT, 500, p3, splitList4, new ExpenseDescription("Shopping", "These idiots forget their wallet")));
 
-        for (int key : expensedb.getDb().keySet())
+        for (int key : expensedb.getAllExpenses().keySet())
             System.out.println(key);
 
         /*

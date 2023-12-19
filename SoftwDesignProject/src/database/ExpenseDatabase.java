@@ -38,7 +38,7 @@ public class ExpenseDatabase extends database<Expense>{
     }
 
     @Override
-    public Expense getEntry(int id) {
+    public Expense getExpense(int id) {
         return db.get(id);
     }
 
@@ -53,7 +53,7 @@ public class ExpenseDatabase extends database<Expense>{
     }
 
     @Override
-    public Map<Integer, Expense> getDb() {
+    public Map<Integer, Expense> getAllExpenses() {
         return db;
     }
 
@@ -80,7 +80,7 @@ public class ExpenseDatabase extends database<Expense>{
                 }
                 balancesInDebtToPaidBy.put(inDebtId, balancesInDebtToPaidBy.get(inDebtId) + split.getAmount());
 
-                // calculations for the outweighted money the PaidBy lost/wins idk how to explain it propperly
+                // calculations for the outweighted money the PaidBy lost/wins idk how to explain it properly
                 if (! balanceSheet.containsKey(inDebtId)) {                      // if InDebt not in balanceSheet yet
                     balanceSheet.put(inDebtId, new HashMap<Integer, Double>());  // add InDebt to balanceSheet
                 }

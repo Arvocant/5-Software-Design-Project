@@ -38,7 +38,7 @@ public class PersonDatabase extends database<Person>{
     }
 
     @Override
-    public Person getEntry(int id) {
+    public Person getExpense(int id) {
         return db.get(id);
     }
 
@@ -55,7 +55,7 @@ public class PersonDatabase extends database<Person>{
         return nextPersonId++;
     }
 
-    public Map<Integer, Person> getDb() {
+    public Map<Integer, Person> getAllExpenses() {
         return db;
     }
 

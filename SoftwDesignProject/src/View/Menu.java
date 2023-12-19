@@ -1,8 +1,8 @@
 
 package View;
 
-import Expense.Expense;
 import Factory.FactoryExpense;
+import Payment.Split;
 import Person.Person;
 import database.ExpenseDatabase;
 import database.PersonDatabase;
@@ -12,6 +12,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Menu extends JFrame {
     private JTextField titleField, nameField, amountField, paidByField;
@@ -105,16 +107,22 @@ public class Menu extends JFrame {
 
                 }
 
-
+                // Create a List<Split> with a single Split object
+                List<Split> payments = new ArrayList<>();
+                Split split = new Split(person) {
+                    // This is an anonymous class extending Split
+                };
+                split.setAmount(amount);
+                payments.add(split);
 
                 //Create an expense
                 int expenseId = ExpenseDatabase.getNextExpenseId(); //method to get the next ID
                 ExpenseDescription desc = new ExpenseDescription(name, description);
-                //Expense expense = FactoryExpense.createExpense(type, amount, person, desc);
-                //expenseDatabase.addEntry(expense);
+                Expense expense = FactoryExpense.createExpense(type, amount, person, payments,desc);
+                expenseDatabase.addEntry(expense);
 
                 // Check if the expense was added successfully
-                if (expenseDatabase.getEntry(expenseId) != null) {
+                if (expenseDatabase.getExpense(expenseId) != null) {
                     System.out.println("New expense added successfully for person: " + person.getName());
                 } else {
                     System.out.println("Error adding new expense.");
