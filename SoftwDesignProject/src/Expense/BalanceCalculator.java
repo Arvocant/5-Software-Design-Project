@@ -9,25 +9,35 @@ public class BalanceCalculator {
 
     Map<Integer, Map<Integer, Double>> balanceSheet = new HashMap<>();
 
+    public void processExpense(Expense expense) {
+        for (Split split : expense.getPayments()) {
+            int inDebtId = split.getPerson().getId();
+
+            // calculations for the money the indebted have to pay
+            updateBalance(balanceSheet, expense.getPaidBy().getId(), inDebtId, split.getAmount());
+
+            // calculations for the out weighted money the PaidBy lost/wins
+            updateBalance(balanceSheet, inDebtId, inDebtId, -split.getAmount());
+        }
+    }
+
     public Map<Integer, Map<Integer, Double>> calculateTotal(Map<Integer, Expense> expenses) {
+        // Clear the balanceSheet before calculating balances for each expense
+        balanceSheet.clear();
+
         for (Expense expenseInDb : expenses.values()) {
-            for (Split split : expenseInDb.getPayments()) {
-                int inDebtId = split.getPerson().getId();
-
-                // calculations for the money the indebted have to pay
-                updateBalance(balanceSheet, expenseInDb.getPaidBy().getId(), inDebtId, split.getAmount());
-
-                // calculations for the out weighted money the PaidBy lost/wins
-                updateBalance(balanceSheet, inDebtId, inDebtId, -split.getAmount());
-            }
+            processExpense(expenseInDb);
         }
         return balanceSheet;
     }
+
 
     public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts(Map<Integer, Expense> expenses, int userId) {
         Map<Integer, Map<Integer, Double>> individualAmounts = new HashMap<>();
 
         for (Expense expenseInDb : expenses.values()) {
+            processExpense(expenseInDb);
+
             for (Split split : expenseInDb.getPayments()) {
                 int inDebtId = split.getPerson().getId();
 
@@ -54,7 +64,6 @@ public class BalanceCalculator {
         balances.put(toUserId, balances.getOrDefault(toUserId, 0.0) + amount);
     }
 
-
     private void updateBalance(Map<Integer, Map<Integer, Double>> balanceSheet, int fromUserId, int toUserId, double amount) {
         if (!balanceSheet.containsKey(fromUserId)) {
             balanceSheet.put(fromUserId, new HashMap<>());
@@ -71,9 +80,10 @@ public class BalanceCalculator {
     public double getBalanceForUser(int userId) {
         double totalBalance = 0.0;
 
-        for (Map<Integer, Double> balances : balanceSheet.values()) {
-            if (balances.containsKey(userId)) {
-                totalBalance += balances.get(userId);
+        if (balanceSheet.containsKey(userId)) {
+            Map<Integer, Double> balances = balanceSheet.get(userId);
+            for (double balance : balances.values()) {
+                totalBalance += balance;
             }
         }
 
