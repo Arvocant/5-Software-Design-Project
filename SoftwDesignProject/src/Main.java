@@ -62,7 +62,7 @@ public class Main {
          * p3 owes p1 22
          */
         List<Split> splitList3 = new ArrayList<>(); splitList3.add(new EqualPayment(p2)); splitList3.add(new EqualPayment(p3));
-        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EQUAL, 66, p1, splitList3, new ExpenseDescription("Matching Necklaces", "To remember out friendship")));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EQUAL, 66, p1, splitList3, new ExpenseDescription("Matching Necklaces", "To remember our friendship")));
         
         /*
          * p1 owes p3 250
@@ -70,7 +70,7 @@ public class Main {
          * p3 paid 72 for himself
          */
         List<Split> splitList4 = new ArrayList<>(); splitList4.add(new ExactPayment(p1, 250)); splitList4.add(new ExactPayment(p2,178));
-        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EXACT, 500, p3, splitList4, new ExpenseDescription("Shopping", "These idiots forget their wallet")));
+        expensedb.addEntry(FactoryExpense.createExpense(ExpenseType.EXACT, 500, p3, splitList4, new ExpenseDescription("Shopping", "These idiots forgot their wallet")));
 
         for (int key : expensedb.getAllExpenses().keySet())
             System.out.println(key);

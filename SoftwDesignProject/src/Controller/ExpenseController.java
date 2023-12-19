@@ -89,34 +89,6 @@ public class ExpenseController implements IController {
     public void setDescription(ExpenseDescription description) {
         modelExpense.setDescription(description);
     }
-
-    public void showBalance(Integer personId){
-        boolean empty = true; //We assume the balance is always empty until proven otherwise by the for loop --> avoid unwanted nullreferences
-        for (Map.Entry<String, Double> userBalance : balance.get(personId).entrySet()){
-            if (userBalance.getValue() != 0) { //Balance can either be positive or negative
-                empty = false;
-                //Print the balance to our view
-                break;
-            }
-        }
-        if (empty)
-            System.out.println("Balance is empty");
-    }
-
-    public void getFullBalance(){
-        boolean empty = true;
-        for (Map.Entry<Integer, Map<String, Double>> allBalances : balance.entrySet()){
-            for (Map.Entry<String, Double> userBalance : allBalances.getValue().entrySet()){
-                if (userBalance.getValue() != 0) {
-                    empty = false;
-                    //Print allBalances to view
-                    break;
-                }
-            }
-        }
-        if (empty)
-            System.out.println("There is no balance");
-    }
     @Override
     public void updateView() {
         //view.update();
