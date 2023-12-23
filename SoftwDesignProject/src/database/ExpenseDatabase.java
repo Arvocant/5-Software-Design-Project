@@ -1,18 +1,21 @@
 package database;
 
 import Expense.Expense;
+import Payment.Split;
+import Person.Person;
 import Expense.BalanceCalculator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ExpenseDatabase extends database<Expense>{
 
     private Map<Integer, Expense> db;
     private static ExpenseDatabase instance; //Singleton --> 1 instance
-    private static int nextExpenseId = 0; // Next available expense ID
+    private static int nextExpenseId = 1; // Next available expense ID
     private BalanceCalculator balanceCalculator;
 
     private ExpenseDatabase() {
@@ -28,17 +31,19 @@ public class ExpenseDatabase extends database<Expense>{
 
     @Override
     public void addEntry(Expense expense) { //addExpense
-        if (expense != null /*&& !db.containsKey(expense.getId())*/) { //Check if there is an expense and if an ID was given
-            this.db.put(getNextExpenseId(), expense); //Put's the new expense with the given ID in the Hashmap
-
+        if (expense != null && !db.containsKey(expense.getId())) { //Check if there is an expense and if an ID was given
+            this.db.put(nextExpenseId, expense); //Put's the new expense with the given ID in the Hashmap
+            ExpenseDatabase.getNextExpenseId();
             PropertyChangeEvent event = new PropertyChangeEvent(this, "addExpense", null, expense);
 
             this.property.firePropertyChange(event); //fires the propertyChangeListener
         }
     }
 
+    // getter functions
+
     @Override
-    public Expense getExpense(int id) {
+    public Expense getItem(int id) {
         return db.get(id);
     }
 
@@ -53,13 +58,19 @@ public class ExpenseDatabase extends database<Expense>{
     }
 
     @Override
-    public Map<Integer, Expense> getAllExpenses() {
+    public Map<Integer, Expense> getAllItems() {
         return db;
     }
 
     public static int getNextExpenseId() {
         return nextExpenseId++;
     }
+
+    public BalanceCalculator getBalanceCalculator() {
+        return this.balanceCalculator;
+    }
+
+    // specific calculate functions
 
     public Map<Integer, Map<Integer, Double>> calculateTotal() {
         return balanceCalculator.calculateTotal(db);
@@ -68,10 +79,12 @@ public class ExpenseDatabase extends database<Expense>{
     public Map<Integer, Map<Integer, Double>> calculateIndividualAmounts(int userId) {
         return balanceCalculator.calculateIndividualAmounts(db, userId);
     }
-
+    
     public double getBalanceForUser(int userId) {
         return balanceCalculator.getBalanceForUser(userId);
     }
+
+
 
     @Override
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {

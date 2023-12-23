@@ -12,10 +12,10 @@ public class BalanceCalculator {
     public void processExpense(Expense expense) {
         for (Split split : expense.getPayments()) {
             int inDebtId = split.getPerson().getId();
-
+            
             // calculations for the money the indebted have to pay
             updateBalance(balanceSheet, expense.getPaidBy().getId(), inDebtId, split.getAmount());
-
+        
             // calculations for the out weighted money the PaidBy lost/wins
             updateBalance(balanceSheet, inDebtId, inDebtId, -split.getAmount());
         }

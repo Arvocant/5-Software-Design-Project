@@ -1,77 +1,43 @@
 package Controller;
 
 import Person.Person;
-import View.ViewFrame;
+import View.Panels.PersonPanel;
 import database.database;
 
 import java.util.ArrayList;
 import java.util.Map;
 
+import Expense.BalanceCalculator;
+
 public class PersonController implements IController {
 
-    private Person modelPerson;
     private database<Person> db;
+    private PersonPanel view;
 
-    private ViewFrame view;
-
-    public PersonController(Person model, database<Person> db, ViewFrame view) {
-        this.modelPerson = model;
-        this.db = db;
+    public PersonController(database<Person> dbModel, PersonPanel view) {
+        this.db = dbModel;
         this.view = view;
     }
 
-    @Override
-    public void addToDb() {
-        db.addEntry(this.modelPerson);
+    public void addToDb(Person person) {
+        this.db.addEntry(person);
     }
 
-    public Person getModelPerson() {
-        return modelPerson;
+    public Person getPerson(int id) {
+        return this.db.getItem(id);
     }
-
-    public void setModelPerson(Person modelPerson) {
-        this.modelPerson = modelPerson;
-    }
-
-    public Person getPersonOutOfDb(String name) {
+    
+    public Person getEntryByName(String name) {
         return this.db.getEntryByName(name);
     }
 
-    public int getIdPerson() {
-        return modelPerson.getId();
+    public Map<Integer, Person> getAllPerson() {
+        return this.db.getAllItems();
     }
 
-    public void setIdPerson(int id) {
-        modelPerson.setId(id);
-    }
-
-    public String getNamePerson() {
-        return modelPerson.getName();
-    }
-
-    public void setNamePerson(String name) {
-        modelPerson.setName(name);
-    }
-
-    public String getEmailPerson() {
-        return modelPerson.getEmail();
-    }
-
-    public void setEmailPerson(String email) {
-        modelPerson.setEmail(email);
-    }
-
-    public String getPhonePerson() {
-        return modelPerson.getPhone();
-    }
-
-    public void setPhonePerson(String phone) {
-        modelPerson.setPhone(phone);
-    }
-
-    public String[] getAllPersons() {
+    public String[] getAllPersonsStringArray() {
         ArrayList<String> AllPerson = new ArrayList<>();
-        Map<Integer, Person> mapList = this.db.getAllExpenses();
+        Map<Integer, Person> mapList = this.db.getAllItems();
         for (Person value : mapList.values()) {
             AllPerson.add(value.toString());
         }
