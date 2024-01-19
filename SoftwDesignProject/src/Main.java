@@ -1,5 +1,6 @@
 
 import Factory.FactoryExpense;
+import Observer.DatabaseObserver;
 import Payment.EqualPayment;
 import Payment.ExactPayment;
 import Payment.Split;
@@ -34,6 +35,10 @@ public class Main {
 
         PersonDatabase persondb = PersonDatabase.getInstance();
         ExpenseDatabase expensedb = ExpenseDatabase.getInstance();
+
+        DatabaseObserver observer = new DatabaseObserver();
+        persondb.addPropertyChangeListener("addPerson", observer);
+        expensedb.addPropertyChangeListener("addExpense", observer);
 
         PersonController pcontr = new PersonController(persondb, new PersonPanel());
         ExpenseController econtr = new ExpenseController(expensedb, new ExpensePanel(), expensedb.getBalanceCalculator());
