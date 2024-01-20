@@ -83,7 +83,14 @@ public class ExpenseDatabase extends database<Expense>{
 
     // remove expenses
     public void removeObject(Expense expense) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeObject'");
+    }
 
+    @Override
+    public int getId(Expense item) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
     }
 
 
@@ -96,4 +103,5 @@ public class ExpenseDatabase extends database<Expense>{
     public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
         super.removePropertyChangeListener(propertyName, listener);
     }
+
 }
