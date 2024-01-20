@@ -6,8 +6,8 @@ import Payment.ExactPayment;
 import Payment.Split;
 import Person.Person;
 import View.StartFrame;
-import View.Panels.ExpensePanel;
-import View.Panels.PersonPanel;
+import View.ControllerViews.ExpenseFrame;
+import View.ControllerViews.PersonFrame;
 import database.ExpenseDatabase;
 import database.PersonDatabase;
 import Expense.*;
@@ -40,8 +40,8 @@ public class Main {
         persondb.addPropertyChangeListener("removePerson", observer);
         expensedb.addPropertyChangeListener("addExpense", observer);
 
-        PersonController pcontr = new PersonController(persondb, new PersonPanel());
-        ExpenseController econtr = new ExpenseController(expensedb, new ExpensePanel(), expensedb.getBalanceCalculator());
+        PersonController pcontr = new PersonController(persondb, new PersonFrame());
+        ExpenseController econtr = new ExpenseController(expensedb, new ExpenseFrame(), expensedb.getBalanceCalculator());
 
         // GUI try
         new StartFrame(pcontr, econtr);

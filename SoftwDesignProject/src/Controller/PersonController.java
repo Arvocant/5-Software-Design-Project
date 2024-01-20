@@ -1,7 +1,7 @@
 package Controller;
 
 import Person.Person;
-import View.Panels.PersonPanel;
+import View.ControllerViews.PersonFrame;
 import database.database;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.Map;
 public class PersonController implements IController {
 
     private database<Person> db;
-    private PersonPanel view;
+    private PersonFrame view;
 
-    public PersonController(database<Person> dbModel, PersonPanel view) {
+    public PersonController(database<Person> dbModel, PersonFrame view) {
         this.db = dbModel;
         this.view = view;
     }
@@ -49,6 +49,6 @@ public class PersonController implements IController {
 
     @Override
     public void updateView() {
-        //
+        view.updatePanel(this.db.getAllItems());
     }
 }

@@ -1,8 +1,8 @@
 package Controller;
 
 import Expense.Expense;
+import View.ControllerViews.ExpenseFrame;
 import Expense.BalanceCalculator;
-import View.Panels.ExpensePanel;
 import database.database;
 
 import java.util.HashMap;
@@ -16,11 +16,11 @@ public class ExpenseController implements IController {
 
     private database<Expense> db;
     private Map<Integer, Map<String, Double>> balance;
-    private ExpensePanel view;
+    private ExpenseFrame view;
 
     private BalanceCalculator balanceCalculator;
 
-    public ExpenseController(database<Expense> dbModel, ExpensePanel view, BalanceCalculator balanceCalculator) {
+    public ExpenseController(database<Expense> dbModel, ExpenseFrame view, BalanceCalculator balanceCalculator) {
         this.db = dbModel;
         this.view = view;
         this.balance = new HashMap<Integer, Map<String, Double>>();

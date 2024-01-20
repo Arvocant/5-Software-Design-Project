@@ -24,15 +24,16 @@ public class UserChoiceFrame extends JFrame{
         this.c = new GridBagConstraints();
         this.pc = pc;
         this.userChoicePanel = new JPanel();
-        this.userChoicePanel.setSize(new Dimension(500,500));
+        this.userChoicePanel.setSize(new Dimension(400,200));
 
-        setSize(600, 600);
+        setSize(400, 200);
+        setLocation(500, 10);
         setLayout(new GridBagLayout());
         setVisible(true);
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 2.0;
         this.c.weighty = 2.0;
-        add(this.userChoicePanel);
+        getContentPane().add(this.userChoicePanel);
 
         this.makeUserButtons();
     }

@@ -28,7 +28,6 @@ import Payment.ExactPayment;
 import Payment.Split;
 import Person.Person;
 import View.CheckBox.CheckboxAction;
-import View.Panels.*;
 
 /// To-Do: Zorg dat het deselcten van de members voor split uit de Arraylist kan gehaald worden -> overstappen op map?
 
@@ -36,8 +35,6 @@ public class MakeExpenseFrame extends JFrame{
     GridBagConstraints c;
     PersonController pc;
     ExpenseController ec;
-
-    private PersonPanel personPanel;
 
     private ArrayList<Split> splitList;
     private Map<Integer, JTextField> textFieldMap = new HashMap<>();
@@ -49,8 +46,9 @@ public class MakeExpenseFrame extends JFrame{
         this.c = new GridBagConstraints();
         this.pc = pc;
         this.ec = ec;
-        this.personPanel = new PersonPanel();
         this.splitList = new ArrayList<>();
+
+        this.setLocation(500, 10);
 
         setSize(600, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +59,6 @@ public class MakeExpenseFrame extends JFrame{
         c.weighty = 2.0;
 
         c.gridx = 0; c.gridy = 1;
-        this.add(personPanel,c);
         this.makeExpense();
     }
 

@@ -20,7 +20,7 @@ public class ManagerFrame extends JFrame {
         this.pc = pc;
         this.ec = ec;
         
-        setSize(600, 600);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         setVisible(true);
@@ -29,7 +29,7 @@ public class ManagerFrame extends JFrame {
         c.weighty = 2.0;
 
         JButton makeExpenseButton = new JButton("Make new expense");
-        c.gridx = 0;
+        c.gridx = 0; c.gridy = 0;
         this.add(makeExpenseButton,c);
         makeExpenseButton.addActionListener(listener ->{
             new MakeExpenseFrame(this.pc, this.ec);
@@ -44,13 +44,23 @@ public class ManagerFrame extends JFrame {
         });
 
         JButton calculateTotalButton = new JButton("Calculate total");
-        c.gridx = 2;
+        c.gridx = 1; c.gridy = 1;
         this.add(calculateTotalButton,c);
         calculateTotalButton.addActionListener(listener -> {
             BalanceCalculator BC = ec.getBalanceCalculator();
             for (Person p : pc.getAllPerson().values()) {
                 System.out.println(BC.calculateIndividualAmounts(ec.getAllExpenses(),p.getId()));
             }
+
+            System.out.println(this.pc.getAllPerson());
+
+        });
+
+        JButton showProfileButton = new JButton("Show Profiles");
+        c.gridx = 0;
+        this.add(showProfileButton,c);
+        showProfileButton.addActionListener(l-> {
+            pc.updateView();
         });
 
     }

@@ -26,6 +26,7 @@ public class UserEditFrame extends JFrame {
         this.c.fill = GridBagConstraints.HORIZONTAL;
         this.c.weightx = 2.0;
         this.c.weighty = 2.0;
+        setLocation(500, 10);
 
         this.Edits();
     }
@@ -47,7 +48,7 @@ public class UserEditFrame extends JFrame {
         JButton changedEmailButton = new JButton("Change email");
         c.gridx = 1; 
         this.add(changedEmailButton,c);
-        changedNameButton.addActionListener(l -> {
+        changedEmailButton.addActionListener(l -> {
             pc.getEntryByName(nameOfUserEdited).setEmail(emailField.getText());
         });
 
@@ -57,7 +58,7 @@ public class UserEditFrame extends JFrame {
         JButton changedPhoneButton = new JButton("Change phone");
         c.gridx = 1; 
         this.add(changedPhoneButton,c);
-        changedNameButton.addActionListener(l -> {
+        changedPhoneButton.addActionListener(l -> {
             pc.getEntryByName(nameOfUserEdited).setPhone(phoneField.getText());
         });
 

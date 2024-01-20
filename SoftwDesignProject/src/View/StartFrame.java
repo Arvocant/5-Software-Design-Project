@@ -14,22 +14,29 @@ public class StartFrame extends JFrame {
     PersonController pc;
     ExpenseController ec;
 
+    JPanel panelInsideFrame;
+
     public StartFrame(PersonController pc, ExpenseController ec)
     {
         super("Add users");
         this.c = new GridBagConstraints();
         this.pc = pc;
         this.ec = ec;
+        this.panelInsideFrame = new JPanel();
+        this.panelInsideFrame.setLayout(new GridBagLayout());
+        this.panelInsideFrame.setPreferredSize(new Dimension(400,400));
         
-        setSize(600, 600);
+        setSize(new Dimension(500,500));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         setVisible(true);
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.weightx = 2.0;
-        c.weighty = 2.0;
-        this.addUsers();
+        this.c.fill = GridBagConstraints.HORIZONTAL;
+        this.c.weightx = 2.0;
+        this.c.weighty = 2.0;
 
+        this.getContentPane().add(panelInsideFrame);
+
+        this.addUsers();
     }
 
     public void addUsers() {
@@ -38,10 +45,10 @@ public class StartFrame extends JFrame {
         {
             c.gridx = 0;
             c.gridy = 0;
-            this.add(usernameLabel,c);
+            this.panelInsideFrame.add(usernameLabel,c);
             c.gridx = 1;
             c.gridy = 0;
-            this.add(usernameField,c);
+            this.panelInsideFrame.add(usernameField,c);
         }
 
         JLabel emailLabel = new JLabel("Email: ");
@@ -49,10 +56,10 @@ public class StartFrame extends JFrame {
         {
             c.gridx = 0;
             c.gridy = 1;
-            this.add(emailLabel,c);
+            this.panelInsideFrame.add(emailLabel,c);
             c.gridx = 1;
             c.gridy = 1;
-            this.add(emailField,c);
+            this.panelInsideFrame.add(emailField,c);
         }
 
         JLabel phoneLabel = new JLabel("Phone: ");
@@ -60,17 +67,17 @@ public class StartFrame extends JFrame {
         {
             c.gridx = 0;
             c.gridy = 2;
-            this.add(phoneLabel,c);
+            this.panelInsideFrame.add(phoneLabel,c);
             c.gridx = 1;
             c.gridy = 2;
-            this.add(phoneField,c);
+            this.panelInsideFrame.add(phoneField,c);
         }
 
         JButton addButton = new JButton("Add user");
         {
             c.gridx = 0;
             c.gridy = 3;
-            this.add(addButton,c);
+            this.panelInsideFrame.add(addButton,c);
         }
         addButton.addActionListener(listener -> {
             this.pc.addToDb(new Person(idCounter, usernameField.getText(), emailField.getText(), phoneField.getText()));
@@ -81,7 +88,7 @@ public class StartFrame extends JFrame {
         {
             c.gridx = 1;
             c.gridy = 3;
-            this.add(nextButton,c);
+            this.panelInsideFrame.add(nextButton,c);
         }
         nextButton.addActionListener(listener -> {
             this.dispose();
