@@ -27,7 +27,7 @@ public class ExpenseDescription {
 
     @Override
     public String toString() {
-        return "Title of expense: " + name + "\n      Note: " + notes;
+        return "Title of expense: " + name + "\nNote: " + notes;
     }
 }
 

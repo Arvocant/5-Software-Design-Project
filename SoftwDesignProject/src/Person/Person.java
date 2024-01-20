@@ -6,7 +6,6 @@ public class Person {
     private String name;
     private String email;
     private String phone;
-    //private double amount;
 
     //private List<Integer> expenseIds; // List to store associated expenses
 

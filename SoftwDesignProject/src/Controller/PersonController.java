@@ -7,8 +7,6 @@ import database.database;
 import java.util.ArrayList;
 import java.util.Map;
 
-import Expense.BalanceCalculator;
-
 public class PersonController implements IController {
 
     private database<Person> db;
@@ -43,6 +41,10 @@ public class PersonController implements IController {
         }
 
         return AllPerson.toArray(new String[0]);
+    }
+
+    public void removePerson(Person person) {
+        this.db.removeObject(person);
     }
 
     @Override

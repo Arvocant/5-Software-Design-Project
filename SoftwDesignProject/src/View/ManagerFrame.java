@@ -5,11 +5,9 @@ import javax.swing.*;
 import Controller.ExpenseController;
 import Controller.PersonController;
 import Expense.BalanceCalculator;
-import Expense.Expense;
 import Person.Person;
 
 import java.awt.*;
-import java.util.Map;
 
 public class ManagerFrame extends JFrame {
     GridBagConstraints c;
@@ -41,13 +39,15 @@ public class ManagerFrame extends JFrame {
         JButton editUsersButton = new JButton("Edit users");
         c.gridx = 1;
         this.add(editUsersButton,c);
+        editUsersButton.addActionListener(listener ->{
+            new UserChoiceFrame(this.pc);
+        });
 
         JButton calculateTotalButton = new JButton("Calculate total");
         c.gridx = 2;
         this.add(calculateTotalButton,c);
         calculateTotalButton.addActionListener(listener -> {
             BalanceCalculator BC = ec.getBalanceCalculator();
-            Map<Integer, Map<Integer, Double>> balanceSheet = BC.calculateTotal(ec.getAllExpenses());
             for (Person p : pc.getAllPerson().values()) {
                 System.out.println(BC.calculateIndividualAmounts(ec.getAllExpenses(),p.getId()));
             }

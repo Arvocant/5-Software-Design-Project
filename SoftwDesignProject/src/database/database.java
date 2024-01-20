@@ -17,6 +17,7 @@ public abstract class database<T> {
     public abstract T getItem(int id);
     public abstract T getEntryByName(String name);
     public abstract Map<Integer, T> getAllItems();
+    public abstract void removeObject(T entry);
 
     public void addPropertyChangeListener(String propertyName, PropertyChangeListener listener) {
 

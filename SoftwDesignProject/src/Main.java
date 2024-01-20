@@ -14,7 +14,6 @@ import Expense.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import Controller.ExpenseController;
 import Controller.PersonController;
@@ -38,13 +37,14 @@ public class Main {
 
         DatabaseObserver observer = new DatabaseObserver();
         persondb.addPropertyChangeListener("addPerson", observer);
+        persondb.addPropertyChangeListener("removePerson", observer);
         expensedb.addPropertyChangeListener("addExpense", observer);
 
         PersonController pcontr = new PersonController(persondb, new PersonPanel());
         ExpenseController econtr = new ExpenseController(expensedb, new ExpensePanel(), expensedb.getBalanceCalculator());
 
         // GUI try
-        StartFrame start = new StartFrame(pcontr, econtr);
+        new StartFrame(pcontr, econtr);
 
         // Tests w/out GUI
 

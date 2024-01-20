@@ -1,7 +1,5 @@
 package View;
 
-import database.*;
-
 import javax.swing.*;
 
 import Controller.ExpenseController;
@@ -75,7 +73,6 @@ public class StartFrame extends JFrame {
             this.add(addButton,c);
         }
         addButton.addActionListener(listener -> {
-            System.out.println("person added");
             this.pc.addToDb(new Person(idCounter, usernameField.getText(), emailField.getText(), phoneField.getText()));
             idCounter ++;
         });

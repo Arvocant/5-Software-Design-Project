@@ -61,4 +61,9 @@ public abstract class Expense {
     }
 
     public abstract boolean validate();
+
+    @Override
+    public String toString() {
+        return this.getDescription().toString();
+    }
 }

@@ -7,8 +7,6 @@ import java.beans.PropertyChangeListener;
 import java.util.HashMap;
 import java.util.Map;
 
-import Expense.BalanceCalculator;
-
 public class PersonDatabase extends database<Person>{
     private static PersonDatabase instance;
     private final Map<Integer, Person> db;
@@ -55,6 +53,15 @@ public class PersonDatabase extends database<Person>{
 
     public Map<Integer, Person> getAllItems() {
         return db;
+    }
+
+    public void removeObject(Person person) {
+        if (person != null && db.containsKey(person.getId())) {
+            this.db.remove(person.getId(),person);
+
+            PropertyChangeEvent event = new PropertyChangeEvent(this, "removePerson", this.db, person);
+            this.property.firePropertyChange(event);
+        }
     }
 
     @Override

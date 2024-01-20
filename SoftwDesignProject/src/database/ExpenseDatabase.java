@@ -1,14 +1,11 @@
 package database;
 
 import Expense.Expense;
-import Payment.Split;
-import Person.Person;
 import Expense.BalanceCalculator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class ExpenseDatabase extends database<Expense>{
@@ -84,6 +81,10 @@ public class ExpenseDatabase extends database<Expense>{
         return balanceCalculator.getBalanceForUser(userId);
     }
 
+    // remove expenses
+    public void removeObject(Expense expense) {
+
+    }
 
 
     @Override

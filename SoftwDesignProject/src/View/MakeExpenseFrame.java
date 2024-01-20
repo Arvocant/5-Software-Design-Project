@@ -29,8 +29,6 @@ import Payment.Split;
 import Person.Person;
 import View.CheckBox.CheckboxAction;
 import View.Panels.*;
-import database.ExpenseDatabase;
-import database.PersonDatabase;
 
 /// To-Do: Zorg dat het deselcten van de members voor split uit de Arraylist kan gehaald worden -> overstappen op map?
 
