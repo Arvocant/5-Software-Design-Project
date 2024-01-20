@@ -12,12 +12,12 @@ import Controller.PersonController;
 public class UserEditFrame extends JFrame {
     private GridBagConstraints c;
     private PersonController pc;
-    private String nameOfUserEdited;
+    private int id;
+    
 
     public UserEditFrame(PersonController pc, String name) {
         super("Apply edits");
         this.pc = pc;
-        this.nameOfUserEdited = name;
         setSize(600, 600);
         setVisible(true);
 
@@ -27,7 +27,7 @@ public class UserEditFrame extends JFrame {
         this.c.weightx = 2.0;
         this.c.weighty = 2.0;
         setLocation(500, 10);
-
+        this.id = this.pc.getId(this.pc.getEntryByName(name));
         this.Edits();
     }
 
@@ -39,7 +39,7 @@ public class UserEditFrame extends JFrame {
         c.gridx = 1; 
         this.add(changedNameButton,c);
         changedNameButton.addActionListener(l -> {
-            pc.getEntryByName(nameOfUserEdited).setName(nameField.getText());
+            pc.getPerson(id).setName(nameField.getText());
         });
 
         JTextField emailField = new JTextField(50);
@@ -49,7 +49,7 @@ public class UserEditFrame extends JFrame {
         c.gridx = 1; 
         this.add(changedEmailButton,c);
         changedEmailButton.addActionListener(l -> {
-            pc.getEntryByName(nameOfUserEdited).setEmail(emailField.getText());
+            pc.getPerson(id).setEmail(emailField.getText());
         });
 
         JTextField phoneField = new JTextField(50);
@@ -59,14 +59,14 @@ public class UserEditFrame extends JFrame {
         c.gridx = 1; 
         this.add(changedPhoneButton,c);
         changedPhoneButton.addActionListener(l -> {
-            pc.getEntryByName(nameOfUserEdited).setPhone(phoneField.getText());
+            pc.getPerson(id).setPhone(phoneField.getText());
         });
 
         JButton deleteUser = new JButton("Delete User");
         c.gridx = 0; c.gridy = 3;
         this.add(deleteUser,c);
         deleteUser.addActionListener(l ->{
-            pc.removePerson(pc.getEntryByName(nameOfUserEdited));
+            pc.removePerson(pc.getPerson(id));
         });
 
         JButton okayButton = new JButton("Continue");

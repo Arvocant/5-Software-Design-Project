@@ -21,6 +21,10 @@ public class PersonController implements IController {
         this.db.addEntry(person);
     }
 
+    public int getId(Person person) {
+        return this.db.getId(person);
+    }
+
     public Person getPerson(int id) {
         return this.db.getItem(id);
     }

@@ -47,6 +47,16 @@ public class PersonDatabase extends database<Person>{
         return null; // Person not found
     }
 
+    @Override
+    public int getId(Person person) {
+        for (Person p : db.values()) {
+            if (p.getName().equals(person.getName())) {
+                return person.getId();
+            }
+        }
+        return -1;
+    }
+
     public static int getNextPersonId() {
         return nextPersonId++;
     }

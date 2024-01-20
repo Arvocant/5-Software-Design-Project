@@ -15,6 +15,7 @@ public abstract class database<T> {
 
     public abstract void addEntry(T entry);
     public abstract T getItem(int id);
+    public abstract int getId(T item);
     public abstract T getEntryByName(String name);
     public abstract Map<Integer, T> getAllItems();
     public abstract void removeObject(T entry);
