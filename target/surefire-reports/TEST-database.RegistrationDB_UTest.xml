@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="database.RegistrationDB_UTest" time="0.006" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="database.RegistrationDB_UTest" time="0.005" errors="1" skipped="0">
   <properties>
     <property name="idea.version" value="2022.3.2"/>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
@@ -47,7 +47,7 @@
     <property name="java.class.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds-2.6.0.jar;C:\Program Files\JetBrains\IntelliJ IDEA 2022.3.2\plugins\maven\lib\maven3\boot\plexus-classworlds.license"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3.2 package"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version=2022.3.2 org.apache.maven.plugins:maven-surefire-plugin:2.12.4:test"/>
     <property name="java.home" value="C:\Users\chloe\.jdks\openjdk-21.0.1"/>
     <property name="user.language" value="nl"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -65,8 +65,8 @@
     <property name="sun.stdout.encoding" value="UTF-8"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="database.RegistrationDB_UTest" name="initializationError" time="0.006">
-    <error message="Failed to transform class with name main.database.PersonDatabase. Reason: Cannot read field &quot;string&quot; because &quot;utf&quot; is null" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to transform class with name main.database.PersonDatabase. Reason: Cannot read field &quot;string&quot; because &quot;utf&quot; is null
+  <testcase classname="database.RegistrationDB_UTest" name="initializationError" time="0.005">
+    <error message="Failed to transform class with name database.PersonDatabase. Reason: Cannot read field &quot;string&quot; because &quot;utf&quot; is null" type="java.lang.IllegalStateException">java.lang.IllegalStateException: Failed to transform class with name database.PersonDatabase. Reason: Cannot read field &quot;string&quot; because &quot;utf&quot; is null
 	at org.powermock.core.classloader.javassist.JavassistMockClassLoader.defineAndTransformClass(JavassistMockClassLoader.java:119)
 	at org.powermock.core.classloader.MockClassLoader.loadMockClass(MockClassLoader.java:174)
 	at org.powermock.core.classloader.MockClassLoader.loadClassByThisClassLoader(MockClassLoader.java:102)
@@ -95,11 +95,10 @@
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
 	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:104)
 	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:86)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:37)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.internal.requests.ClassRequest.createRunner(ClassRequest.java:28)
-	at org.junit.internal.requests.MemoizingRequest.getRunner(MemoizingRequest.java:19)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:26)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:33)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:250)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
@@ -119,7 +118,7 @@ Caused by: java.lang.NullPointerException: Cannot read field &quot;string&quot; 
 	at javassist.CtClassType.toBytecode(CtClassType.java:1570)
 	at javassist.CtClass.toBytecode(CtClass.java:1519)
 	at org.powermock.core.classloader.javassist.JavassistMockClassLoader.defineAndTransformClass(JavassistMockClassLoader.java:117)
-	... 42 more
+	... 41 more
 </error>
   </testcase>
 </testsuite>

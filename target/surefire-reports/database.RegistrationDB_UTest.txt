@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: database.RegistrationDB_UTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.284 sec <<< FAILURE!
-initializationError(database.RegistrationDB_UTest)  Time elapsed: 0.006 sec  <<< ERROR!
-java.lang.IllegalStateException: Failed to transform class with name main.database.PersonDatabase. Reason: Cannot read field "string" because "utf" is null
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.301 sec <<< FAILURE!
+initializationError(database.RegistrationDB_UTest)  Time elapsed: 0.005 sec  <<< ERROR!
+java.lang.IllegalStateException: Failed to transform class with name database.PersonDatabase. Reason: Cannot read field "string" because "utf" is null
 	at org.powermock.core.classloader.javassist.JavassistMockClassLoader.defineAndTransformClass(JavassistMockClassLoader.java:119)
 	at org.powermock.core.classloader.MockClassLoader.loadMockClass(MockClassLoader.java:174)
 	at org.powermock.core.classloader.MockClassLoader.loadClassByThisClassLoader(MockClassLoader.java:102)
@@ -32,11 +32,10 @@ java.lang.IllegalStateException: Failed to transform class with name main.databa
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
 	at org.junit.internal.builders.AnnotatedBuilder.buildRunner(AnnotatedBuilder.java:104)
 	at org.junit.internal.builders.AnnotatedBuilder.runnerForClass(AnnotatedBuilder.java:86)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:37)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:70)
-	at org.junit.internal.requests.ClassRequest.createRunner(ClassRequest.java:28)
-	at org.junit.internal.requests.MemoizingRequest.getRunner(MemoizingRequest.java:19)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:26)
+	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:59)
+	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:33)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.execute(JUnit4Provider.java:250)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:141)
 	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:112)
@@ -56,5 +55,5 @@ Caused by: java.lang.NullPointerException: Cannot read field "string" because "u
 	at javassist.CtClassType.toBytecode(CtClassType.java:1570)
 	at javassist.CtClass.toBytecode(CtClass.java:1519)
 	at org.powermock.core.classloader.javassist.JavassistMockClassLoader.defineAndTransformClass(JavassistMockClassLoader.java:117)
-	... 42 more
+	... 41 more
 
