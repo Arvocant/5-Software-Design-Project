@@ -18,9 +18,9 @@ public class ExpenseDatabase extends database<Expense>{
     private ExpenseDatabase() {
         this.db = new HashMap<>();
         this.balanceCalculator = new BalanceCalculator();
-    } //Constructor --> make new database (which is a HashMap)
+    } //Constructor --> make new main.database (which is a HashMap)
 
-    public static ExpenseDatabase getInstance(){ //Create new instance of the expense database
+    public static ExpenseDatabase getInstance(){ //Create new instance of the expense main.database
         if (instance == null)
             instance = new ExpenseDatabase();
         return instance;
@@ -51,7 +51,7 @@ public class ExpenseDatabase extends database<Expense>{
                 return exp;
             }
         }
-        return null; // Expense not found
+        return null; // main.Expense not found
     }
 
     @Override
