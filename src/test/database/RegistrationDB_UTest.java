@@ -17,7 +17,7 @@ import java.util.HashMap;
 // Run with PowerMock, an extended version of Mockito
 @RunWith(PowerMockRunner.class)
 // Prepare class RegistrationController for testing by injecting mocks
-@PrepareForTest({ PersonDatabase.class })
+@PrepareForTest(PersonDatabase.class)
 public class RegistrationDB_UTest
 {
     public RegistrationDB_UTest()
@@ -37,6 +37,7 @@ public class RegistrationDB_UTest
     {
         Field field = PersonDatabase.class.getDeclaredField("db");
         field.setAccessible(true);
+
         database<Person> registrationDB_underTest = PersonDatabase.getInstance();
         HashMap<Integer, Person> mock_db = (HashMap)Mockito.mock(HashMap.class);
         field.set(registrationDB_underTest, mock_db);
