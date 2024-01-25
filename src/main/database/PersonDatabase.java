@@ -44,7 +44,7 @@ public class PersonDatabase extends database<Person>{
                 return person;
             }
         }
-        return null; // Person not found
+        return null; // main.Person not found
     }
 
     @Override

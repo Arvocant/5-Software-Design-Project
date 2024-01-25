@@ -1,4 +1,3 @@
-
 import Factory.FactoryExpense;
 import Observer.DatabaseObserver;
 import Payment.EqualPayment;

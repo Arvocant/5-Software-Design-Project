@@ -42,7 +42,7 @@ public class MakeExpenseFrame extends JFrame{
 
     public MakeExpenseFrame(PersonController pc, ExpenseController ec)
     {
-        super("Expense Form");
+        super("main.Expense Form");
         this.c = new GridBagConstraints();
         this.pc = pc;
         this.ec = ec;
