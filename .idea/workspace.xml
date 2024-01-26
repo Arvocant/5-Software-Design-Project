@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="46f05dc8-5e36-4758-a264-198d323e8e88" name="Changes" comment="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/database/RegistrationDB_UTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/database/RegistrationDB_UTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/expense/ExpenseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/expense/ExpenseTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +46,7 @@
     "JUnit.ExpenseTest.testGetAmount.executor": "Run",
     "JUnit.ExpenseTest.testSetDescription.executor": "Run",
     "JUnit.ExpenseTest.testSetPaidBy.executor": "Run",
+    "JUnit.ExpenseTest.testValidateReturnsFalse.executor": "Run",
     "JUnit.ExpenseTest.testValidateReturnsTrue.executor": "Run",
     "JUnit.RegistrationDB_UTest.executor": "Run",
     "JUnit.RegistrationDB_UTest.t_addEntry.executor": "Run",
@@ -78,23 +79,7 @@
       <recent name="C:\UA_Hero_School\5SoftwareDesign\5-Software-Design-Project\SoftwDesignProject\src\test\database" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegistrationDB_UTest.t_addEntry">
-    <configuration name="ExpenseTest.testGetAmount" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="5-Software-Design-Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="expense.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="expense" />
-      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
-      <option name="METHOD_NAME" value="testGetAmount" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="JUnit.ExpenseTest.testValidateReturnsFalse">
     <configuration name="ExpenseTest.testSetDescription" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="5-Software-Design-Project" />
       <extension name="coverage">
@@ -122,6 +107,22 @@
       <option name="PACKAGE_NAME" value="expense" />
       <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
       <option name="METHOD_NAME" value="testSetPaidBy" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ExpenseTest.testValidateReturnsFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="5-Software-Design-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="expense.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="expense" />
+      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
+      <option name="METHOD_NAME" value="testValidateReturnsFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -160,19 +161,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ExpenseTest.testGetAmount" />
       <item itemvalue="JUnit.ExpenseTest.testSetDescription" />
       <item itemvalue="JUnit.ExpenseTest.testSetPaidBy" />
+      <item itemvalue="JUnit.ExpenseTest.testValidateReturnsFalse" />
       <item itemvalue="JUnit.ExpenseTest.testValidateReturnsTrue" />
       <item itemvalue="JUnit.RegistrationDB_UTest.t_addEntry" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ExpenseTest.testValidateReturnsFalse" />
         <item itemvalue="JUnit.RegistrationDB_UTest.t_addEntry" />
         <item itemvalue="JUnit.ExpenseTest.testSetDescription" />
         <item itemvalue="JUnit.ExpenseTest.testSetPaidBy" />
         <item itemvalue="JUnit.ExpenseTest.testValidateReturnsTrue" />
-        <item itemvalue="JUnit.ExpenseTest.testGetAmount" />
       </list>
     </recent_temporary>
   </component>
@@ -201,7 +202,7 @@
       <workItem from="1706198056453" duration="286000" />
       <workItem from="1706198354016" duration="4760000" />
       <workItem from="1706256441954" duration="330000" />
-      <workItem from="1706257844415" duration="3418000" />
+      <workItem from="1706257844415" duration="4497000" />
     </task>
     <task id="LOCAL-00001" summary="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <created>1706189126869</created>

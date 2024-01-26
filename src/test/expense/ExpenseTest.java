@@ -81,6 +81,8 @@ public class ExpenseTest {
 
     @Test
     public void testValidateReturnsFalse() {
+        expense = new ConcreteExpense(0.0, mockPerson, Arrays.asList(mockSplit), mockDescription);
+
         assertFalse(expense.validate());
     }
 
@@ -96,7 +98,9 @@ public class ExpenseTest {
 
         @Override
         public boolean validate() {
-            return true;
+            // Realistic validation logic: Check if the total amount paid is greater than zero
+            double totalAmountPaid = getPayments().stream().mapToDouble(Split::getAmount).sum();
+            return totalAmountPaid > 0;
         }
     }
 }
