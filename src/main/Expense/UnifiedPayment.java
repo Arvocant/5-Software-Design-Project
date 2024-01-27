@@ -13,7 +13,7 @@ public class UnifiedPayment extends Expense{
     }
 
     @Override
-    public boolean validate() {
+    public boolean validate() { //Factory Pattern
         for (Split payment : getPayments()){
            if (payment instanceof EqualPayment){
                return true;

@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="46f05dc8-5e36-4758-a264-198d323e8e88" name="Changes" comment="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/expense/ExpenseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/expense/ExpenseTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Expense/PersonalPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Expense/PersonalPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Expense/UnifiedPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Expense/UnifiedPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Payment/EqualPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Payment/EqualPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Payment/ExactPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Payment/ExactPayment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +61,7 @@
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "CalculateBalanceClass",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/UA_Hero_School/5SoftwareDesign/5-Software-Design-Project",
+    "last_opened_file_path": "D:/Universiteit Antwerpen/Software Design/5-Software-Design-AC/Lab3/Lab3_Code",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -67,7 +70,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.45517242",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "settings.editor.selected.configurable": "settings.sync",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -202,7 +205,10 @@
       <workItem from="1706198056453" duration="286000" />
       <workItem from="1706198354016" duration="4760000" />
       <workItem from="1706256441954" duration="330000" />
-      <workItem from="1706257844415" duration="4497000" />
+      <workItem from="1706257844415" duration="4680000" />
+      <workItem from="1706273748622" duration="602000" />
+      <workItem from="1706277134178" duration="2389000" />
+      <workItem from="1706356978068" duration="801000" />
     </task>
     <task id="LOCAL-00001" summary="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <created>1706189126869</created>
@@ -251,5 +257,9 @@
         <breakpoint enabled="true" type="java-exception" />
       </default-breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

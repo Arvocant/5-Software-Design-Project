@@ -13,7 +13,7 @@ public class PersonalPayment extends Expense{
     }
 
     @Override
-    public boolean validate() {
+    public boolean validate() { //Factory Pattern
         //for (Split payments : getPayments()){
         //  if (!(payments instanceof ExactPayment))
         //      return false;
