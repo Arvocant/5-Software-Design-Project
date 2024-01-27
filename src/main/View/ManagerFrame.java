@@ -47,20 +47,19 @@ public class ManagerFrame extends JFrame {
         c.gridx = 1; c.gridy = 1;
         this.add(calculateTotalButton,c);
         calculateTotalButton.addActionListener(listener -> {
-            BalanceCalculator BC = ec.getBalanceCalculator();
-            for (Person p : pc.getAllPerson().values()) {
+            BalanceCalculator BC = this.ec.getBalanceCalculator();
+            for (Person p : this.pc.getAllPerson().values()) {
                 System.out.println(BC.calculateIndividualAmounts(ec.getAllExpenses(),p.getId()));
             }
-
             System.out.println(this.pc.getAllPerson());
-
         });
 
-        JButton showProfileButton = new JButton("Show Profiles");
+        JButton showProfileButton = new JButton("Show Profiles/Expenses");
         c.gridx = 0;
         this.add(showProfileButton,c);
         showProfileButton.addActionListener(l-> {
-            pc.updateView();
+            this.pc.updateView();
+            this.ec.updateView();
         });
 
     }

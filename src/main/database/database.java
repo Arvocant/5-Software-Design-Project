@@ -2,15 +2,18 @@ package database;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.HashMap;
 import java.util.Map;
 
 
 public abstract class database<T> {
     protected final PropertyChangeSupport property;
+    protected Map<Integer,T> db;
 
     public database()
     {
         property = new PropertyChangeSupport(this);
+        this.db = new HashMap<>();
     }
 
     public abstract void addEntry(T entry);

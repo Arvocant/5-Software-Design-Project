@@ -5,25 +5,18 @@ import View.ControllerViews.ExpenseFrame;
 import Expense.BalanceCalculator;
 import database.database;
 
-import java.util.HashMap;
 import java.util.Map;
-
-/*
- * The one that will make changes to the view and to the state of the model
- */
 
 public class ExpenseController implements IController {
 
-    private database<Expense> db;
-    private Map<Integer, Map<String, Double>> balance;
-    private ExpenseFrame view;
+    private final database<Expense> db;
+    private final ExpenseFrame view;
 
-    private BalanceCalculator balanceCalculator;
+    private final BalanceCalculator balanceCalculator;
 
     public ExpenseController(database<Expense> dbModel, ExpenseFrame view, BalanceCalculator balanceCalculator) {
         this.db = dbModel;
         this.view = view;
-        this.balance = new HashMap<Integer, Map<String, Double>>();
         this.balanceCalculator = balanceCalculator;
     }
 
@@ -41,7 +34,6 @@ public class ExpenseController implements IController {
         System.out.println(balanceSheet);
         // Do something with the calculated balances...
         // For example, pass the balanceSheet to the view for display
-        // --Misschien zo toe te voegen in de view? extra element toevoegen mss? view.displayBalances(balanceSheet);
     }
 
     // all get and set methods from here down
@@ -66,11 +58,8 @@ public class ExpenseController implements IController {
         return this.balanceCalculator;
     }
 
-
     @Override
     public void updateView() {
-        //view.update();
+        view.updatePanel(this.db.getAllItems());
     }
-
-
 }

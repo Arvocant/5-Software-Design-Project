@@ -14,7 +14,7 @@ import org.mockito.MockitoAnnotations;
 import java.util.Arrays;
 import java.util.List;
 
-public class ExpenseTest {
+public class Expense_UTest {
 
     @Mock
     private Person mockPerson;

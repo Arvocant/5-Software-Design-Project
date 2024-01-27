@@ -4,13 +4,12 @@ import Person.Person;
 import View.ControllerViews.PersonFrame;
 import database.database;
 
-import java.util.ArrayList;
 import java.util.Map;
 
 public class PersonController implements IController {
 
-    private database<Person> db;
-    private PersonFrame view;
+    private final database<Person> db;
+    private final PersonFrame view;
 
     public PersonController(database<Person> dbModel, PersonFrame view) {
         this.db = dbModel;
@@ -35,16 +34,6 @@ public class PersonController implements IController {
 
     public Map<Integer, Person> getAllPerson() {
         return this.db.getAllItems();
-    }
-
-    public String[] getAllPersonsStringArray() {
-        ArrayList<String> AllPerson = new ArrayList<>();
-        Map<Integer, Person> mapList = this.db.getAllItems();
-        for (Person value : mapList.values()) {
-            AllPerson.add(value.toString());
-        }
-
-        return AllPerson.toArray(new String[0]);
     }
 
     public void removePerson(Person person) {

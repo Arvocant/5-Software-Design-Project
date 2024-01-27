@@ -6,14 +6,10 @@ import java.util.Map;
 import Person.Person;
 
 public class PersonFrame extends JFrame {
-
-    
     public PersonFrame() {
-
         setSize(new Dimension(600,200));
         setLocation(500,10);
         setLayout(new GridBagLayout());
-
     }
 
     public void updatePanel(Map<Integer, Person> AllPersonsInDB) {
@@ -29,7 +25,6 @@ public class PersonFrame extends JFrame {
         int i = 0;
 
         for (Person user : AllPersonsInDB.values()) {
-
             c.gridy = i;
             c.gridx = 0; 
             JLabel name = new JLabel("Name: " + user.getName());

@@ -5,18 +5,16 @@ import Expense.BalanceCalculator;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
 import java.util.Map;
 
 public class ExpenseDatabase extends database<Expense>{
 
-    private Map<Integer, Expense> db;
     private static ExpenseDatabase instance; //Singleton --> 1 instance
     private static int nextExpenseId = 1; // Next available expense ID
-    private BalanceCalculator balanceCalculator;
+    private final BalanceCalculator balanceCalculator;
 
     private ExpenseDatabase() {
-        this.db = new HashMap<>();
+        super();
         this.balanceCalculator = new BalanceCalculator();
     } //Constructor --> make new main.database (which is a HashMap)
 
@@ -59,8 +57,8 @@ public class ExpenseDatabase extends database<Expense>{
         return db;
     }
 
-    public static int getNextExpenseId() {
-        return nextExpenseId++;
+    public static void getNextExpenseId() {
+        nextExpenseId++;
     }
 
     public BalanceCalculator getBalanceCalculator() {

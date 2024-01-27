@@ -4,50 +4,63 @@ import Person.Person;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import java.lang.reflect.Field;
 import java.util.HashMap;
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
 
 // Run with PowerMock, an extended version of Mockito
 @RunWith(PowerMockRunner.class)
 // Prepare class PersonDatabase for testing by injecting mocks
-@PrepareForTest(PersonDatabase.class)
+@PrepareForTest({database.class})
+
 public class RegistrationDB_UTest {
 
-    private PersonDatabase personDatabase;
+    public RegistrationDB_UTest()
+    {   /*
+        Needs to stay empty.
+        Necessary initializations need to be done in function 'initialize()'
+        */   }
 
     @Before
-    public void initialize() {
-        PowerMockito.mockStatic(PersonDatabase.class);
-        personDatabase = PersonDatabase.getInstance();
+    public void initialize() throws Exception {
+
     }
 
     @Test
-    @SuppressWarnings("unchecked")
-    public void t_addEntry() throws NoSuchFieldException, IllegalAccessException {
-        // Mock the static method getInstance in PersonDatabase
-        PowerMockito.mockStatic(PersonDatabase.class);
-
-        // Create a mock database
-        HashMap<Integer, Person> mock_db = Mockito.mock(HashMap.class);
-
-        // Set the mock database using reflection
-        Field field = PersonDatabase.class.getDeclaredField("db");
+    public void t_addEntry() throws NoSuchFieldException, IllegalAccessException
+    {
+        Field field = database.class.getDeclaredField("db");
         field.setAccessible(true);
-        field.set(null, mock_db); // Use null because getInstance is mocked
 
-        // Create a mock person
-        Person mockPerson = Mockito.mock(Person.class);
+        PersonDatabase personDatabaseUnderTest = PersonDatabase.getInstance();
 
-        // Call the addEntry method
-        PersonDatabase.getInstance().addEntry(mockPerson);
+        Person mockPerson1 = mock(Person.class);
+        when(mockPerson1.getId()).thenReturn(1); // Assuming Person has an getId method
+        when(mockPerson1.getName()).thenReturn("Person One"); // Optional, based on your Person class
 
-        // Verify that put method is called on the mock database
-        Mockito.verify(mock_db, Mockito.times(1)).put(Mockito.anyInt(), Mockito.eq(mockPerson));
+        Person mockPerson2 = mock(Person.class);
+        when(mockPerson2.getId()).thenReturn(2);
+        when(mockPerson2.getName()).thenReturn("Person Two");
+
+        Map<Integer, Person> mockDb = new HashMap<>();
+        field.set(personDatabaseUnderTest, mockDb);
+
+        personDatabaseUnderTest.addEntry(mockPerson1);
+        assertEquals("Testing size of mockDb - should be 1",
+                1, mockDb.size());
+        assertThat(mockDb.get(1), instanceOf(Person.class));
+
+        personDatabaseUnderTest.addEntry(mockPerson2);
+        assertEquals("Testing size of mockMap - should be 2",
+                2, mockDb.size());
+        assertThat(mockDb.get(2), instanceOf(Person.class));
     }
 }

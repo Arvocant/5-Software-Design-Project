@@ -1,15 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.64767617" />
+    <option name="SCOPE_TYPE" value="3" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46f05dc8-5e36-4758-a264-198d323e8e88" name="Changes" comment="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Expense/PersonalPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Expense/PersonalPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Expense/UnifiedPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Expense/UnifiedPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Payment/EqualPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Payment/EqualPayment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Payment/ExactPayment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Payment/ExactPayment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controller/ExpenseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller/ExpenseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/ControllerViews/ExpenseFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/ControllerViews/ExpenseFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/ControllerViews/PersonFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/ControllerViews/PersonFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/ManagerFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/ManagerFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/database/ExpenseDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/database/ExpenseDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/database/PersonDatabase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/database/PersonDatabase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/database/database.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/database/database.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/database/RegistrationDB_UTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/database/RegistrationDB_UTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/expense/ExpenseTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/expense/Expense_UTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-database.RegistrationDB_UTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-database.RegistrationDB_UTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/database.RegistrationDB_UTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/database.RegistrationDB_UTest.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +42,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -41,39 +57,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main (1).executor": "Run",
-    "Downloaded.Files.Path.Enabled": "false",
-    "JUnit.CalculateBalance_ITest.executor": "Run",
-    "JUnit.ExpenseTest.testGetAmount.executor": "Run",
-    "JUnit.ExpenseTest.testSetDescription.executor": "Run",
-    "JUnit.ExpenseTest.testSetPaidBy.executor": "Run",
-    "JUnit.ExpenseTest.testValidateReturnsFalse.executor": "Run",
-    "JUnit.ExpenseTest.testValidateReturnsTrue.executor": "Run",
-    "JUnit.RegistrationDB_UTest.executor": "Run",
-    "JUnit.RegistrationDB_UTest.t_addEntry.executor": "Run",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "CalculateBalanceClass",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Universiteit Antwerpen/Software Design/5-Software-Design-AC/Lab3/Lab3_Code",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.45517242",
-    "settings.editor.selected.configurable": "settings.sync",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main (1).executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;JUnit.CalculateBalance_ITest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseTest.testGetAmount.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseTest.testSetDescription.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseTest.testSetPaidBy.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseTest.testValidateReturnsFalse.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ExpenseTest.testValidateReturnsTrue.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RegistrationDB_UTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RegistrationDB_UTest.t_addEntry.executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;CalculateBalanceClass&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Universiteit Antwerpen/Software Design/5-Software-Design-AC/Lab3/Lab3_Code&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.45517242&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\UA_Hero_School\5SoftwareDesign\5-Software-Design-Project\SoftwDesignProject" />
@@ -82,40 +98,30 @@
       <recent name="C:\UA_Hero_School\5SoftwareDesign\5-Software-Design-Project\SoftwDesignProject\src\test\database" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.ExpenseTest.testValidateReturnsFalse">
-    <configuration name="ExpenseTest.testSetDescription" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="5-Software-Design-Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="expense.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="expense" />
-      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
-      <option name="METHOD_NAME" value="testSetDescription" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpenseTest.testSetPaidBy" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CalculateBalance_ITest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="5-Software-Design-Project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="expense.*" />
+          <option name="PATTERN" value="Integration.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="expense" />
-      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
-      <option name="METHOD_NAME" value="testSetPaidBy" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="Integration" />
+      <option name="MAIN_CLASS_NAME" value="Integration.CalculateBalance_ITest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpenseTest.testValidateReturnsFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Expense_UTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="5-Software-Design-Project" />
       <extension name="coverage">
         <pattern>
@@ -124,30 +130,29 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="expense" />
-      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
+      <option name="MAIN_CLASS_NAME" value="expense.Expense_UTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Expense_UTest.testValidateReturnsFalse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="5-Software-Design-Project" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="expense.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="expense" />
+      <option name="MAIN_CLASS_NAME" value="expense.Expense_UTest" />
       <option name="METHOD_NAME" value="testValidateReturnsFalse" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ExpenseTest.testValidateReturnsTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="5-Software-Design-Project" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="expense.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="expense" />
-      <option name="MAIN_CLASS_NAME" value="expense.ExpenseTest" />
-      <option name="METHOD_NAME" value="testValidateReturnsTrue" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RegistrationDB_UTest.t_addEntry" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrationDB_UTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="5-Software-Design-Project" />
       <extension name="coverage">
         <pattern>
@@ -157,26 +162,25 @@
       </extension>
       <option name="PACKAGE_NAME" value="database" />
       <option name="MAIN_CLASS_NAME" value="database.RegistrationDB_UTest" />
-      <option name="METHOD_NAME" value="t_addEntry" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ExpenseTest.testSetDescription" />
-      <item itemvalue="JUnit.ExpenseTest.testSetPaidBy" />
-      <item itemvalue="JUnit.ExpenseTest.testValidateReturnsFalse" />
-      <item itemvalue="JUnit.ExpenseTest.testValidateReturnsTrue" />
-      <item itemvalue="JUnit.RegistrationDB_UTest.t_addEntry" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.Expense_UTest" />
+      <item itemvalue="JUnit.Expense_UTest.testValidateReturnsFalse" />
+      <item itemvalue="JUnit.CalculateBalance_ITest" />
+      <item itemvalue="JUnit.RegistrationDB_UTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ExpenseTest.testValidateReturnsFalse" />
-        <item itemvalue="JUnit.RegistrationDB_UTest.t_addEntry" />
-        <item itemvalue="JUnit.ExpenseTest.testSetDescription" />
-        <item itemvalue="JUnit.ExpenseTest.testSetPaidBy" />
-        <item itemvalue="JUnit.ExpenseTest.testValidateReturnsTrue" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.CalculateBalance_ITest" />
+        <item itemvalue="JUnit.Expense_UTest" />
+        <item itemvalue="JUnit.RegistrationDB_UTest" />
+        <item itemvalue="JUnit.Expense_UTest.testValidateReturnsFalse" />
       </list>
     </recent_temporary>
   </component>
@@ -209,6 +213,8 @@
       <workItem from="1706273748622" duration="602000" />
       <workItem from="1706277134178" duration="2389000" />
       <workItem from="1706356978068" duration="801000" />
+      <workItem from="1706361009203" duration="775000" />
+      <workItem from="1706361807578" duration="14368000" />
     </task>
     <task id="LOCAL-00001" summary="Cleaned up workspace + added maven and pom file + attempt at unit test case (im working on it gimme some time)">
       <created>1706189126869</created>

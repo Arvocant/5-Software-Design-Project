@@ -4,16 +4,13 @@ import Person.Person;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.HashMap;
 import java.util.Map;
 
 public class PersonDatabase extends database<Person>{
     private static PersonDatabase instance;
-    private final Map<Integer, Person> db;
-    private static int nextPersonId = 1; // Next available person ID
 
     private PersonDatabase() {
-        this.db = new HashMap<>();
+        super();
     }
 
     public static synchronized PersonDatabase getInstance() {
@@ -27,7 +24,6 @@ public class PersonDatabase extends database<Person>{
         if (person != null && !db.containsKey(person.getId())) {
             this.db.put(person.getId(), person);
             PropertyChangeEvent event = new PropertyChangeEvent(this, "addPerson", this.db, person);
-
             this.property.firePropertyChange(event);
         }
     }
@@ -57,10 +53,6 @@ public class PersonDatabase extends database<Person>{
         return -1;
     }
 
-    public static int getNextPersonId() {
-        return nextPersonId++;
-    }
-
     public Map<Integer, Person> getAllItems() {
         return db;
     }
@@ -83,7 +75,4 @@ public class PersonDatabase extends database<Person>{
     public void removePropertyChangeListener(String propertyName, PropertyChangeListener listener) {
         super.removePropertyChangeListener(propertyName, listener);
     }
-
-
-
 }
